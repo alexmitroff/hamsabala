@@ -1,0 +1,29 @@
+# Created by https://www.gitignore.io/api/vim,django
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+public_html/
+local_settings.py
+*.db
+db.sqlite3
+media
+
+### Vim ###
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+# End of https://www.gitignore.io/api/vim,django
+
