@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>The HTML5 Herald</title>
+        <meta name="description" content="Hamsabala">
+        <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
+        <!--[if lt IE 9]>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <![endif]-->
+        {% block analitics %}{% endblock %}
+    </head>
+
+    <body>
+        <header>{% include 'include/header.html'  %}</header>
+        <main>{% block page %}{% endblock %}</main>
+        <footer>{% include 'include/footer.html' %}</footer>
+        <script type="text/javascript" src="{% static 'js/hamsabala.js'  %}"></script>
+    </body>
+</html>
