@@ -1,0 +1,32 @@
+/* Rules for small devices (mobile vertical) */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box; /* height and width will include border and padding */
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    min-width:100vh;
+}
+
+main{
+    flex-grow:1;
+}
+
+/* Rules for mobile horisontal and tablet vertical */
+@media (min-width:560px) and (max-width:767px) {}
+
+/* Rules commot to screens bigger than tablet screens */
+@media (min-width:768px) {}
+
+/* Rules for tablet horisontal and small ultrabook screens */
+@media (min-width:768px) and (max-width:919px) {}
+
+/* Rules for middle screens */
+@media (min-width:920px) and (max-width:1199px) {}
+
+/* Rules for large screens */
+@media (min-width:1200px) {}
