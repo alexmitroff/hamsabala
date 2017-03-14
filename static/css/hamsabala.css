@@ -26,13 +26,17 @@ main{
 @media (min-width:560px) and (max-width:767px) {}
 
 /* Rules commot to screens bigger than tablet screens */
-@media (min-width:768px) {}
+@media (min-width:768px){}
 
 /* Rules for tablet horisontal and small ultrabook screens */
 @media (min-width:768px) and (max-width:919px) {}
 
 /* Rules for middle screens */
-@media (min-width:920px) and (max-width:1199px) {}
+@media (min-width:920px) and (max-width:1199px) {
+    .container{width:920px;}
+}
 
 /* Rules for large screens */
-@media (min-width:1200px) {}
+@media (min-width:1200px) {
+    .container{width:920px;}
+}
