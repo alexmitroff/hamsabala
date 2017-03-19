@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}HamsaBala</title>
         <meta name="description" content="Hamsabala">
+        <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet"> 
+        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
         <!--[if lt IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -17,7 +19,7 @@
             <div class="container">{% include 'include/header.html'  %}</div>
         </header>
         <main>
-            <div class="container">{% block page %}{% endblock %}</div>
+        {% block page %}{% endblock %}
         </main>
         <footer>
             <div class="container">{% include 'include/footer.html' %}</div>

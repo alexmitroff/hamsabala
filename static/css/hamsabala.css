@@ -6,10 +6,20 @@
     box-sizing:border-box; /* height and width will include border and padding */
 }
 
+html{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
 body{
     display:flex;
     flex-direction:column;
-    min-width:100vh;
+    min-height:100vh;
+}
+
+header{
+    position:relative;
+    background-color:#3F2E84;
+    z-index:1000;
 }
 
 main{
@@ -22,11 +32,92 @@ main{
     margin:0 auto;
 }
 
+nav{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.logo{
+    padding:.5rem;
+}
+
+.logo > svg{
+    height:6rem;
+    width:6rem;
+}
+
+.logo > svg path{
+    fill:white;
+    fill-opacity:1;
+    fill-rule:evenodd;
+    stroke:none;
+}
+
+nav > ul{
+    list-style:none;
+    display:none;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+}
+
+nav > ul > li {
+    padding:1rem;
+    border-bottom:.2rem solid #3F2E84;
+}
+
+nav > ul > li:hover{
+    border-bottom-color:white;
+}
+
+nav > ul > li,
+nav > ul > li > a{
+    transition: all .3s ease-out 0s;
+}
+
+nav > ul > li > a{
+    color:white;
+    font-size:1.2rem;
+    text-decoration:none;
+}
+
+nav > ul > li > a:hover{
+}
+
+#mobile-menu-button{
+    padding:1rem 2rem;
+    background:none;
+    border:none;
+    cursor:pointer;
+    color:white;
+    font-size:1.5rem;
+}
+
+
+
+#mobile-menu-button::before{
+    font-family: FontAwesome;
+    content: "\f0c9";
+}
+
+#mobile-menu-button.active::before{
+    font-family: FontAwesome;
+    content: "\f00d";
+}
+
+section{
+    min-height:100vh;
+}
+
 /* Rules for mobile horisontal and tablet vertical */
 @media (min-width:560px) and (max-width:767px) {}
 
 /* Rules commot to screens bigger than tablet screens */
-@media (min-width:768px){}
+@media (min-width:768px){
+    nav > ul{display:flex; flex-direction:row;}
+    #mobile-menu-button{display:none;}
+}
 
 /* Rules for tablet horisontal and small ultrabook screens */
 @media (min-width:768px) and (max-width:919px) {}
@@ -39,4 +130,8 @@ main{
 /* Rules for large screens */
 @media (min-width:1200px) {
     .container{width:920px;}
+}
+
+nav > ul.active{
+    display:flex;
 }
