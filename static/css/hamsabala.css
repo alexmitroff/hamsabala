@@ -8,6 +8,7 @@
 
 html{
     font-family: 'Didact Gothic', sans-serif;
+    color:#444;
 }
 
 body{
@@ -21,6 +22,9 @@ header{
     position:relative;
     background-color:#3F2E84;
     z-index:1000;
+}
+
+header{
 }
 
 main{
@@ -117,6 +121,42 @@ section{
     background-position:center;
 }
 
+section > .container{
+    padding:2rem 1rem;
+    display:flex;
+    flex-wrap:wrap;
+    min-height:100vh;
+    align-items:center;
+}
+
+#about{
+    box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
+    background-image:url(../img/backgrounds/blue.jpg);
+}
+#incense{}
+#products{
+    box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
+    background-color:#eee;
+}
+#retail{}
+
+.panel{
+    background-color:white;
+    padding:1rem;
+    border-radius:.1rem;
+}
+
+.panel-shadow{
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.panel > h2{
+    text-align:center;
+    border-bottom:.1rem solid #ddd;
+    padding-bottom:1rem;
+    margin-bottom:1rem;
+}
+
 /* Rules for mobile horisontal and tablet vertical */
 @media (min-width:560px) and (max-width:767px) {}
 
@@ -137,6 +177,7 @@ section{
 /* Rules for large screens */
 @media (min-width:1200px) {
     .container{width:920px;}
+    .panel{width:40%;}
 }
 
 nav > ul.active{
