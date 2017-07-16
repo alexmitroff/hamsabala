@@ -3,12 +3,17 @@ $light-color:rgba(255,255,255,1);
 $light-text-back:rgba(255,255,255,.9); 
 $font-color:rgba(68,68,68,1);
 
-$space-color:rgba(200,200,200,1);
+$space-color:rgba(220,220,220,1);
+$space-size:3vw;
 
+$card-size: (100vw - $space-size*4)/3;
+
+$header-font-size:1.2rem;
+
+$link-transition: all .3s ease-out 0s;
+
+$back-title:url(../img/backgrounds/taj.jpg);
 $back-about:url(../img/backgrounds/wind.jpg);
-$back-incense:url(../img/backgrounds/.jpg);
-$back-products:url(../img/backgrounds/.jpg);
-$back-retail:url(../img/backgrounds/.jpg);
 $back-contacts:url(../img/backgrounds/.jpg);
 /* Rules for small devices (mobile vertical) */
 
@@ -18,9 +23,20 @@ $back-contacts:url(../img/backgrounds/.jpg);
     box-sizing:border-box; /* height and width will include border and padding */
 }
 
+a{
+    text-decoration:none;
+    color:$main-color;
+    transition:$link-transition;
+}
+
+a:hover, a:focus{
+    color:$font-color;
+}
+
 html{
     font-family: 'Didact Gothic', sans-serif;
     color:$font-color;
+    background-color:$space-color;
 }
 
 body{
@@ -31,7 +47,7 @@ body{
     > footer,
     > header{
         position:relative;
-        background-color:$main-color;
+        background-color:$space-color;
         z-index:1000;
     }
 
@@ -62,7 +78,7 @@ body{
         width:6rem;
         
         path{
-            fill:$light-color;
+            fill:$main-color;
             fill-opacity:1;
             fill-rule:evenodd;
             stroke:none;
@@ -70,12 +86,31 @@ body{
     }
 }    
 
+.brand{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-right:2rem;
+
+    > a{
+        color:$main-color;
+        font-size:$header-font-size;
+        text-transform:uppercase;
+        text-decoration:none;
+        font-weight:bold;
+        transition:$link-transition;
+    }
+
+    >  a:hover{
+        color:black;
+    }
+}
 
 nav{
+    padding: 0 1rem;
     width:100%;
     display:flex;
     justify-content:space-between;
-    
     > ul{
         list-style:none;
         display:none;
@@ -84,34 +119,39 @@ nav{
         align-items:center;
         
         > li{
-            padding:1rem;
-            border-bottom:.2rem solid $main-color;
-
+            min-height:3rem;
+            height:$space-size;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:0 1rem;
             > a{
-                color:$light-color;
-                font-size:1.2rem;
+                color:$main-color;
+                font-size:$header-font-size;
                 text-decoration:none;
             }
             > a:hover{
+                color:$font-color;
             }
         }
 
         > li:hover{
-            border-bottom-color:$light-color;
         }
 
         > li, > li > a{
-            transition: all .3s ease-out 0s;
+            transition:$link-transition;
         }
     }
 }
 
+
+
 #mobile-menu-button{
-    padding:1rem 2rem;
+    padding:1rem;
     background:none;
     border:none;
     cursor:pointer;
-    color:$light-color;
+    color:$main-color;
     font-size:1.5rem;
 }
 
@@ -126,16 +166,34 @@ nav{
 }
 
 section{
-    min-height:100vh;
     background-size:cover;
     background-position:center;
+    margin-bottom: $space-size;
 
     > .container{
-        padding:2rem 1rem;
         display:flex;
-        flex-wrap:wrap;
-        min-height:100vh;
         align-items:center;
+    }
+}
+
+.cards{
+    flex-direction:column;
+    justify-content:space-between;
+    > .card{
+        background-color:$light-color;
+        padding:1rem;
+        width:100vw;
+        height:100vw;
+        margin-bottom:$space-size;
+        h2,
+        main{
+            text-align:center;
+        }
+
+    }
+
+    > .card:last-child{
+        margin:0;
     }
 }
 
@@ -143,9 +201,60 @@ p{
     margin-bottom:1rem;
 }
 
+.button{
+    padding: .5rem 2rem .7rem 2rem;
+    border: .1rem solid $light-color;
+    background-color:rgba(0,0,0,.5);
+    color: $light-color;
+    border-radius:.2rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    transition:$link-transition;
+    margin-bottom:1rem;
+}
+
+.button:hover{
+    color:$font-color;
+    background-color:$light-color;
+}
+
+.collection{
+    background-image:url(../img/default/box.png);
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+#title{
+    background-image:$back-title;
+    > .container{
+        min-height:80vh;
+        justify-content:center;
+        flex-direction:column;
+
+        h1{
+            text-transform:uppercase;
+            color:$light-color;
+            font-size:5.2rem;
+            margin-bottom:2vh;
+            text-align:center;
+        }
+
+        p{
+            color:$light-color;
+            font-size:1.5rem;
+            margin-bottom:10vh;
+            text-align:center;
+        }
+    }
+}
+
 #about{
     box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
     background-image:$back-about;
+    background-attachment:fixed;
 }
 #incense{}
 #products{
@@ -176,8 +285,30 @@ p{
 
 /* Rules commot to screens bigger than tablet screens */
 @media (min-width:768px){
-    nav > ul{display:flex; flex-direction:row;}
+    body{
+    margin: 0 $space-size;
+    > header{
+        position:fixed;
+        width:100%;
+        }
+    }
+    nav {
+        padding:0;
+        justify-content: flex-start;
+        > ul{display:flex; flex-direction:row;}
+    }
     #mobile-menu-button{display:none;}
+    #title{
+        background-attachment:fixed;
+    }
+    .cards{
+        flex-direction:row;
+        .card{
+            width:$card-size;
+            height:$card-size;
+            margin:0;            
+        }
+    }
 }
 
 /* Rules for tablet horisontal and small ultrabook screens */
@@ -185,12 +316,10 @@ p{
 
 /* Rules for middle screens */
 @media (min-width:920px) and (max-width:1199px) {
-    .container{width:920px;}
 }
 
 /* Rules for large screens */
 @media (min-width:1200px) {
-    .container{width:920px;}
     .panel{width:50%;}
 }
 

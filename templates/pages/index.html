@@ -1,6 +1,30 @@
 {% extends 'base/base.html' %}
 {% block title %}{% endblock %}
 {% block page %}
+<section id="title">
+    <article class="container">
+            <div class="logo">{% include "include/logo.html"  %}</div>
+            <h1>hamsa bala</h1>
+            <p>Натуральная смесь трав, масел, смол, цветов и ароматных древесных опилок.</p>
+            <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
+    </article>
+</section>
+<section id="collections">
+    <div class="container cards">
+        <article class="card collection">
+            <header><h2>Благовонья</h2></header>
+            <main><a href=#! >к коллекции</a></main>
+        </article>
+        <article class="card collection">
+            <header><h2>Благовонья</h2></header>
+            <main><a href=#! >к коллекции</a></main>
+        </article>
+        <article class="card collection">
+            <header><h2>Благовонья</h2></header>
+            <main><a href=#! >к коллекции</a></main>
+        </article>
+    </div>  
+</section>
 <section id="about">
     <div class="container">
         <article class="panel panel-shadow">
@@ -21,9 +45,6 @@
         </article>
     </div>
 </section>
-<section id="incense"><div class="container"></div></section>
-<section id="products"><div class="container"></div></section>
-<section id="retail"><div class="container"></div></section>
 <section id="contacts"><div class="container"></div></section>
 {% endblock %}
 {% block templates %}{% endblock %}
