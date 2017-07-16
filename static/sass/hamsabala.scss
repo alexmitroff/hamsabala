@@ -1,0 +1,199 @@
+$main-color:rgba(60,45,130,1);
+$light-color:rgba(255,255,255,1);
+$light-text-back:rgba(255,255,255,.9); 
+$font-color:rgba(68,68,68,1);
+
+$space-color:rgba(200,200,200,1);
+
+$back-about:url(../img/backgrounds/wind.jpg);
+$back-incense:url(../img/backgrounds/.jpg);
+$back-products:url(../img/backgrounds/.jpg);
+$back-retail:url(../img/backgrounds/.jpg);
+$back-contacts:url(../img/backgrounds/.jpg);
+/* Rules for small devices (mobile vertical) */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box; /* height and width will include border and padding */
+}
+
+html{
+    font-family: 'Didact Gothic', sans-serif;
+    color:$font-color;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+
+    > footer,
+    > header{
+        position:relative;
+        background-color:$main-color;
+        z-index:1000;
+    }
+
+    > header{
+    }
+
+    > main{
+        flex-grow:1;
+        display:block;
+    }
+
+    > footer{
+        min-height:10rem;
+    }
+}
+
+.container{
+    width:100%;
+    margin:0 auto;
+}
+
+
+.logo{
+    padding:.5rem;
+    
+    > svg{
+        height:6rem;
+        width:6rem;
+        
+        path{
+            fill:$light-color;
+            fill-opacity:1;
+            fill-rule:evenodd;
+            stroke:none;
+        }    
+    }
+}    
+
+
+nav{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    
+    > ul{
+        list-style:none;
+        display:none;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+        
+        > li{
+            padding:1rem;
+            border-bottom:.2rem solid $main-color;
+
+            > a{
+                color:$light-color;
+                font-size:1.2rem;
+                text-decoration:none;
+            }
+            > a:hover{
+            }
+        }
+
+        > li:hover{
+            border-bottom-color:$light-color;
+        }
+
+        > li, > li > a{
+            transition: all .3s ease-out 0s;
+        }
+    }
+}
+
+#mobile-menu-button{
+    padding:1rem 2rem;
+    background:none;
+    border:none;
+    cursor:pointer;
+    color:$light-color;
+    font-size:1.5rem;
+}
+
+#mobile-menu-button:before{
+    font-family: FontAwesome;
+    content: "\f0c9";
+}
+
+#mobile-menu-button.active:before{
+    font-family: FontAwesome;
+    content: "\f00d";
+}
+
+section{
+    min-height:100vh;
+    background-size:cover;
+    background-position:center;
+
+    > .container{
+        padding:2rem 1rem;
+        display:flex;
+        flex-wrap:wrap;
+        min-height:100vh;
+        align-items:center;
+    }
+}
+
+p{
+    margin-bottom:1rem;
+}
+
+#about{
+    box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
+    background-image:$back-about;
+}
+#incense{}
+#products{
+    box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
+    background-color:#eee;
+}
+#retail{}
+
+.panel{
+    background-color:rgba(255,255,255,.9);
+    padding:1rem;
+    border-radius:.1rem;
+    h2{
+        text-align:center;
+        border-bottom:.1rem solid #ddd;
+        padding-bottom:1rem;
+        margin-bottom:1rem;
+    }
+}
+
+.panel-shadow{
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+
+/* Rules for mobile horisontal and tablet vertical */
+@media (min-width:560px) and (max-width:767px) {}
+
+/* Rules commot to screens bigger than tablet screens */
+@media (min-width:768px){
+    nav > ul{display:flex; flex-direction:row;}
+    #mobile-menu-button{display:none;}
+}
+
+/* Rules for tablet horisontal and small ultrabook screens */
+@media (min-width:768px) and (max-width:919px) {}
+
+/* Rules for middle screens */
+@media (min-width:920px) and (max-width:1199px) {
+    .container{width:920px;}
+}
+
+/* Rules for large screens */
+@media (min-width:1200px) {
+    .container{width:920px;}
+    .panel{width:50%;}
+}
+
+nav > ul.active{
+    display:flex;
+}
