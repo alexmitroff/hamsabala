@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}Hamsa Bala</title>
         <meta name="description" content="Hamsa bala">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet"> 
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
@@ -25,5 +26,6 @@
             <div class="container">{% include 'include/footer.html' %}</div>
         </footer>
         <script type="text/javascript" src="{% static 'js/hamsabala.js'  %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
     </body>
 </html>
