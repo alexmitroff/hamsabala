@@ -25,7 +25,13 @@
         <footer>
             <div class="container">{% include 'include/footer.html' %}</div>
         </footer>
-        <script type="text/javascript" src="{% static 'js/hamsabala.js'  %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
+        <script type="text/javascript" src="{% static 'js/hamsabala.js'  %}"></script>
+        <script>
+            {% block scripts %}{% endblock %}
+            $(document).ready(function(){
+                {% block docready %}{% endblock %}
+            });
+        </script>
     </body>
 </html>
