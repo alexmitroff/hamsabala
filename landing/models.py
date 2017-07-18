@@ -43,7 +43,7 @@ class Section(BuildableModel):
     def  __str__(self):
         return self.title
 
-@receiver(pre_delete, sender=section)
+@receiver(pre_delete, sender=Section)
 def section_delete(sender, instance, **kwargs):
 	instance.img.delete(False)
 
@@ -59,8 +59,8 @@ class Collection(BuildableModel):
             help_text=u"От меньшего к большему")
     show = models.BooleanField(u"показывать",
             default=True)
-    section = models.ForeignKey('Manufacturer', 
-            on_delete=models.CASCADE,)
+    section = models.ForeignKey('Section', 
+            on_delete=models.CASCADE, default=0)
     title = models.CharField(u'название',
             max_length=140)
     url = models.CharField('url', 

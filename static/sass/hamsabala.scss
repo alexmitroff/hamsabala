@@ -35,6 +35,10 @@ a:hover, a:focus{
     color:$font-color;
 }
 
+.space{
+    margin-bottom:$space-size;
+}
+
 html{
     font-family: 'Didact Gothic', sans-serif;
     color:$font-color;
@@ -62,7 +66,21 @@ body{
     }
 
     > footer{
+        padding:2rem 1rem;
         min-height:10rem;
+        background-color:black;
+        p {
+            color:$light-color;
+            text-align:center;
+        }
+
+        p:first-child{
+            text-transform:uppercase;
+        }
+
+        p:last-child{
+            margin:0;
+        }
     }
 }
 
@@ -147,7 +165,6 @@ nav{
 }
 
 
-
 #mobile-menu-button{
     padding:1rem;
     background:none;
@@ -170,12 +187,17 @@ nav{
 section{
     background-size:cover;
     background-position:center;
-    margin-bottom: $space-size;
 
     > .container{
         display:flex;
         align-items:center;
     }
+}
+
+hr{
+    border:.1rem solid $main-color;
+    width:1rem;
+    margin: 1rem auto;
 }
 
 .cards{
@@ -190,11 +212,6 @@ section{
         h2,
         main{
             text-align:center;
-        }
-        hr{
-            border:.1rem solid $main-color;
-            width:1rem;
-            margin: 1rem auto;
         }
 
     }
@@ -286,6 +303,60 @@ p{
         }
     }
 }
+
+.feedback{
+    background-image:$back-about;
+    background-position:center;
+    background-size:cover;
+    padding:1rem;
+    
+    > h2 {
+        text-align:center;
+        color:$main-color;
+    }
+
+    >form{    
+        display:flex;
+        flex-direction:column;
+        width:100%;
+
+
+        > input, 
+        > textarea{
+            border-radius:none;
+            background:none;
+            background-color:$space-color;
+            margin-bottom:1rem;
+            padding:.5rem 1rem .6rem 1rem;
+            border:.2rem solid $main-color;
+            transition:$link-transition;
+        }
+
+        > textarea{
+            height:10rem;
+        }
+
+        > input:focus,
+        > textarea:focus{
+            background-color:$light-color;
+        }
+
+        > input[type=submit]{
+            cursor:pointer;
+            background-color:$main-color;
+            color:$light-color;
+        }
+
+        > input[type=submit]:hover,
+        > input[type=submit]:focus{
+            background-color:$light-color;
+            color:$main-color;
+            border-color:$light-color;
+        }
+    }
+}
+
+
 #instagram{
     min-height:$square2;
     display:flex;
@@ -329,7 +400,8 @@ p{
     box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
     background-color:#eee;
 }
-#retail{}
+#retail{
+}
 
 .panel{
     background-color:$light-color;
@@ -353,12 +425,19 @@ p{
 /* Rules commot to screens bigger than tablet screens */
 @media (min-width:768px){
     body{
-    margin: 0 $space-size;
-    > header{
-        position:fixed;
-        width:100%;
+        > header{
+            position:fixed;
+            width:100%;
+            }
+        >header,
+        >main{
+            padding: 0 $space-size;
         }
+        > footer{
+            padding:5rem 1rem;
+        }            
     }
+
     nav {
         padding:0;
         justify-content: flex-start;
@@ -401,6 +480,27 @@ p{
                 width:$square2;
             }
         }
+    }
+
+    .feedback{
+        padding:3rem $square4;
+        > form{
+            flex-direction:row;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            align-items:center;
+
+            > input, 
+            > textarea{
+                width:100%;
+            }
+
+            #id_name,
+            #id_email{
+                width:49%;
+            }
+        }
+
     }
 
     #instagram{

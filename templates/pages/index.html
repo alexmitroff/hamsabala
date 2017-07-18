@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %}{% endblock %}
 {% block page %}
-<section id="title">
+<section id="title" class="space">
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
             <h1>hamsa bala</h1>
@@ -10,14 +10,14 @@
             <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
     </article>
 </section>
-<section id="collections">
+<section id="collections" class="space">
     <div class="container cards">
-        {% for c in collections %}
+        {% for c in sections %}
         <article class="card collection" style="background-image:url({{c.img.url}})">
             <header><h2>{{c.title}}</h2></header>
-            <hr>
+            <hr/>
             <main>
-                <a href=#! >к коллекции</a>
+                <a href=#! >к коллекциям</a>
             </main>
         </article>
         {% empty %}
@@ -56,22 +56,23 @@
         </div>
     </div>
 </section>
-<section id="instagram">
-        <div>
-            {% for p in insta %}
-            <a href="{{p.url}}" target="_blank" style="background-image:url({{p.img}})"><span>hamsabala.pro</span></a>
-            {% empty %}
-            {% endfor %}
-        </div>
+<section class="feedback">
+            <h2>Обратная связь</h2>
+            <hr/>
+        <form>
+                <input type="text" name="name" id="id_name" placeholder="имя" required/>
+                <input type="email" name="email" id="id_email" placeholder="почта" required/>
+                <input type="text" name="subject" id="id_subject" placeholder="тема" required/>
+                <textarea name="text" id="id_text" required></textarea>
+                <input type="submit" value="отправить" />
+        </form>
+</section>
+<section id="retail" class="space">
 </section>
 <section id="contacts">
-    <div class="container">
-        {{insta1}}
-    </div>
 </section>
 {% endblock %}
 {% block templates %}{% endblock %}
 {% block scripts %}{% endblock %}
 {% block docready %}
-    getInsta();
 {% endblock %}

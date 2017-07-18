@@ -46,10 +46,8 @@ def str2obj():
 
 def index(request):
     template = 'pages/index.html'
-    collections = Collection.objects.filter(show=True)
-    insta =str2obj()
+    sections = Section.objects.filter(show=True)
     var = {
-            "collections":collections,
-            "insta":insta,
+            "sections":sections,
             }
     return render(request, template, var)
