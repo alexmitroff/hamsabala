@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 {% block title %}{% endblock %}
 {% block page %}
 <section id="title">
@@ -43,29 +44,31 @@
                 </p>
             </article>
             <section class="imgs">
+                <div style="background-image:url({% static 'img/backgrounds/dust.jpg' %});"></div>
+                <div style="background-image:url({% static 'img/backgrounds/forest.jpg' %});"></div>
             </section>
         </div>
         <div>
-            <section class="imgs"></section>
+            <section class="imgs">
+                <div class="half" style="background-image:url({% static 'img/backgrounds/spice.jpg' %});"></div>
+            </section>
             <article class="panel"></article>
         </div>
     </div>
 </section>
 <section id="instagram">
-    <div>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
-    </div>
-    <div>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
-        <a href="#!" target="_blank"></a>
+        <div>
+            {% for p in insta %}
+            <a href="{{p.url}}" target="_blank" style="background-image:url({{p.img}})"><span>hamsabala.pro</span></a>
+            {% empty %}
+            {% endfor %}
+        </div>
+</section>
+<section id="contacts">
+    <div class="container">
+        {{insta1}}
     </div>
 </section>
-<section id="contacts"><div class="container"></div></section>
 {% endblock %}
 {% block templates %}{% endblock %}
 {% block scripts %}{% endblock %}
