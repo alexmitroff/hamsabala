@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
-    'bakery',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +116,3 @@ STATIC_ROOT = STAT_ROOT
 MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDI_DIR
 
-BAKERY_VIEWS = (
-    'landing.build.IndexView',
-        )

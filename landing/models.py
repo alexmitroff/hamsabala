@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
-from bakery.models import BuildableModel
 
 # Create your models here.
 
@@ -11,8 +10,7 @@ def section_path(instance, filename):
 		filename = filename[:99]
 	return 'sections/{0}/{1}'.format(instance.url, filename)
 
-class Section(BuildableModel):
-    detail_views = ('landing.build.CollectionView')
+class Section(models.Model):
     pos = models.IntegerField(u'позиция', default=0, 
             help_text=u"От меньшего к большему")
     show = models.BooleanField(u"показывать", 
@@ -53,8 +51,7 @@ def collection_path(instance, filename):
 		filename = filename[:99]
 	return 'collectons/{0}/{1}'.format(instance.url, filename)
 
-class Collection(BuildableModel):
-    detail_views = ('landing.build.CollectionView')
+class Collection(models.Model):
     pos = models.IntegerField(u'позиция', default=0,
             help_text=u"От меньшего к большему")
     show = models.BooleanField(u"показывать",
