@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from landing.models import *
+from products.models import *
+from retail.models import *
 import urllib.request
 import json
 # Create your views here.

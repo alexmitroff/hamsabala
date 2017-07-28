@@ -2,8 +2,14 @@
 from django.db import models
 
 class City(models.Model):
+    pos = models.IntegerField("position",default=0)
+    show = models.BooleanField("show", default = True) 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
+    created = models.DateField(u'created',auto_now=False, 
+            auto_now_add=True)
+    modified = models.DateField(u'modified',auto_now=True, 
+            auto_now_add=False)
     
     class Meta:
         verbose_name = "City"
@@ -18,11 +24,16 @@ class Partner(models.Model):
     show = models.BooleanField("show", default = True) 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
-    address = model.TextField("address",
+    city = models.ForeignKey(City, on_delete=models.CASCADE,
+            default = 0)
+    address = models.TextField("address",
             blank=True, null=True)
-    city = models.ForeignKey(City, default = 0)
     url = models.CharField( "link", max_length = 250,
             blank=True, null=True)
+    created = models.DateField(u'created',auto_now=False, 
+            auto_now_add=True)
+    modified = models.DateField(u'modified',auto_now=True, 
+            auto_now_add=False)
     
     class Meta:
         verbose_name = u"Partner"
