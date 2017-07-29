@@ -46,7 +46,7 @@ def str2obj():
     return objs
 
 def index(request):
-    template = 'pages/constraction.html'
+    template = 'pages/index.html'
     sections = Section.objects.filter(show=True)
     var = {
             "sections":sections,

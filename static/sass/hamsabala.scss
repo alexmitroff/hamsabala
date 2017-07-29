@@ -297,6 +297,11 @@ p{
         min-height:100vw;
     }
 
+    article{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
 
     .imgs{
         display:flex;
@@ -532,6 +537,7 @@ p{
 /* Rules for large screens */
 @media (min-width:1200px) {
     .panel{width:50%;}
+
 }
 
 nav > ul.active{
