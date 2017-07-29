@@ -52,7 +52,6 @@ def collection_path(instance, filename):
 class Collection(models.Model):
     pos = models.IntegerField(u'position', default=0)
     show = models.BooleanField(u"show", default=True)
-    section = models.ForeignKey(Section, on_delete=models.CASCADE, default=0)
     title = models.CharField(u'name', max_length=140)
     slug = models.SlugField('slug', max_length=50,
             help_text="http://hamsabala.ru/slug/slug")
@@ -96,6 +95,8 @@ class Product(models.Model):
     pos = models.IntegerField(u'position', default=0)
     show = models.BooleanField(u"show", default=True)
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, 
+            default=0)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE, 
             default=0)
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
