@@ -3,19 +3,19 @@ $light-color:rgba(255,255,255,1);
 $light-text-back:rgba(255,255,255,.9); 
 $font-color:rgba(68,68,68,1);
 
-$space-color:rgba(220,220,220,1);
+$space-color:rgba(237,237,237,1);
 $space-size:3vw;
 
 $card-size: (100vw - $space-size*4)/3;
 $square4: (100vw - $space-size*2)/4;
 $square2: (100vw - $space-size*2)/2;
 
-$header-font-size:1.2rem;
+$header-font-size:1rem;
 
 $link-transition: all .3s ease-out 0s;
 
-$back-title:url(../img/backgrounds/taj.jpg);
-$back-about:url(../img/backgrounds/wind.jpg);
+$back-title:url(../img/backgrounds/temple.jpg);
+$back-about:url(../img/backgrounds/grass.jpg);
 $back-contacts:url(../img/backgrounds/.jpg);
 /* Rules for small devices (mobile vertical) */
 
@@ -45,6 +45,18 @@ html{
     background-color:$space-color;
 }
 
+h1, h2, h3{
+    text-transform:uppercase;
+    letter-spacing:.2rem;
+    font-weight:400;
+    color:$main-color;
+    text-align:center;
+}
+
+h2{
+    font-size:1rem;
+}
+
 body{
     display:flex;
     flex-direction:column;
@@ -72,6 +84,21 @@ body{
         p {
             color:$light-color;
             text-align:center;
+        }
+
+        .social{
+            > a{
+                color:$light-color;
+                > i {
+                    font-size:2rem;
+                    padding:1rem .5rem;
+                }
+            }
+
+            > a:hover,
+            > a:focus{
+                color:$main-color;
+            }
         }
 
         p:first-child{
@@ -266,14 +293,14 @@ p{
 
         h1{
             text-transform:uppercase;
-            color:$light-color;
-            font-size:5.2rem;
+            color:$main-color;
+            font-size:5.3rem;
             margin-bottom:2vh;
             text-align:center;
         }
 
         p{
-            color:$light-color;
+            color:$main-color;
             font-size:1.5rem;
             margin-bottom:10vh;
             text-align:center;
@@ -340,10 +367,10 @@ p{
         > textarea{
             border-radius:none;
             background:none;
-            background-color:$space-color;
+            background-color:lighten( $space-color, 10%);
             margin-bottom:1rem;
             padding:.5rem 1rem .6rem 1rem;
-            border:.2rem solid $main-color;
+            border:.1rem solid $main-color;
             transition:$link-transition;
         }
 
@@ -415,7 +442,51 @@ p{
     box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.5);
     background-color:#eee;
 }
+
+$retail-offset:6rem;
+$retail-border:.2rem solid $space-color;
 #retail{
+    background-color:$light-color;
+    > .retail-title{
+        height:$retail-offset;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-bottom:$retail-border;
+    }
+
+    > .cities{
+        display:flex;
+        flex-direction:column;
+        
+        > div{
+            padding: ($space-size+1vw) 1rem;
+            width:100vw;
+            height:100vw;
+            background-color:$light-color;
+            border-bottom:$retail-border;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            align-items:center;
+            h3, h4{
+                text-align:center;
+            }
+
+            > div{
+                flex-grow:1;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+        }
+
+        > div:last-child{
+            border-bottom:none;
+        }
+
+    }
 }
 
 .panel{
@@ -496,9 +567,27 @@ p{
             }
         }
     }
+    
+    #retail{
 
+        > .cities{
+            flex-direction:row;
+            > div {
+                width:$square4;
+                min-height:$square4;
+                height:100%;
+                border-bottom:none;
+                border-right:$retail-border;
+            }
+
+            > div:last-child{
+                border-right:none;
+            }
+        }
+    }
+    
     .feedback{
-        padding:3rem $square4;
+        padding:6rem $square4;
         > form{
             flex-direction:row;
             justify-content:space-between;

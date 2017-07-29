@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+
 from products.models import *
 from retail.models import *
+
 import urllib.request
 import json
 # Create your views here.
@@ -48,8 +51,18 @@ def str2obj():
 def index(request):
     template = 'pages/index.html'
     sections = Section.objects.filter(show=True)
+    cities = City.objects.filter(show=True)
     var = {
             "sections":sections,
+            "cities":cities,
+            }
+    return render(request, template, var)
+
+def section(request, section):
+    template = 'pages/section.html'
+    section = get_object_or_404(Section, slug=section)
+    var = {
+            "section":section,
             }
     return render(request, template, var)
 

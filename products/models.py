@@ -114,7 +114,7 @@ class Product(models.Model):
     class Meta:
         verbose_name=u"product"
         verbose_name_plural=u"products"
-        ordering = ['collection','pos']
+        ordering = ['collection', 'section','pos']
     
     def save(self, *args, **kwargs):
         try:

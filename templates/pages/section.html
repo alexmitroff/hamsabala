@@ -6,7 +6,7 @@
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
             <h1>hamsa bala</h1>
-            <p>Попробуй настоящее!</p>
+            <p>Натуральная смесь трав, масел, смол, цветов и ароматных древесных опилок.</p>
             <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
     </article>
 </section>
@@ -49,13 +49,13 @@
                 </p>
             </article>
             <section class="imgs">
-                <div style="background-image:url({% static 'img/backgrounds/scent.jpg' %});"></div>
-                <div style="background-image:url({% static 'img/backgrounds/lavand.jpg' %});"></div>
+                <div style="background-image:url({% static 'img/backgrounds/dust.jpg' %});"></div>
+                <div style="background-image:url({% static 'img/backgrounds/forest.jpg' %});"></div>
             </section>
         </div>
         <div>
             <section class="imgs">
-                <div class="half" style="background-image:url({% static 'img/backgrounds/boy.jpg' %});"></div>
+                <div class="half" style="background-image:url({% static 'img/backgrounds/spice.jpg' %});"></div>
             </section>
             <article class="panel"></article>
         </div>
@@ -73,29 +73,6 @@
         </form>
 </section>
 <section id="retail" class="space">
-    <div class="retail-title"><h2>Где купить благовония Hamsa Bala</h2></div>
-    <div class="cities">
-        {% for c in cities %}
-            <div>
-                <h3>{{c.name}}</h3>
-                <hr/>
-                <div>
-                {% for i in c.partner_set.all %}
-                <section>
-                    <h4>{{i.name}}</h4>
-                    <p>{{i.address}}</p>
-                </section>    
-                {% empty %}
-                    <p>Comming soon...</p>
-                {% endfor %}
-                </div>
-                {% if c.partner_set.count > 3 %}
-                <a href="#!">Полный список</a>
-                {% endif %}
-            </div>
-        {% empty %}
-        {% endfor %}
-    </div>        
 </section>
 <section id="contacts">
 </section>
