@@ -61,8 +61,14 @@ def index(request):
 def section(request, section):
     template = 'pages/section.html'
     section = get_object_or_404(Section, slug=section)
+    collections = Collection.objects.filter(show=True)
+    products = []
+    for c in collections:
+        p = Product.objects.filter(show=True, section=section, collection=c)
+        products.append(p)
     var = {
             "section":section,
+            "collections":products,
             }
     return render(request, template, var)
 

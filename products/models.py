@@ -8,7 +8,7 @@ def section_path(instance, filename):
 	filename = filename.replace(" ", "")
 	if len(filename) > 100:
 		filename = filename[:99]
-	return 'sections/{0}/{1}'.format(instance.url, filename)
+	return 'sections/{0}/{1}'.format(instance.slug, filename)
 
 class Section(models.Model):
     pos = models.IntegerField(u'position', default=0)
@@ -16,12 +16,16 @@ class Section(models.Model):
     title = models.CharField(u'name', max_length=140)
     slug = models.SlugField('slug', max_length=50,
             help_text="http://hamsabala.ru/slug/slug")
+    description = models.TextField("description",
+            blank=True, null=True)
     created = models.DateField(u'created',auto_now=False, 
             auto_now_add=True)
     modified = models.DateField(u'modified',auto_now=True, 
             auto_now_add=False)
-    img = models.ImageField(u'cover', upload_to=section_path,
-            blank=True, null=True)
+    img = models.ImageField(u'img', upload_to=section_path,
+            blank=True, null=True, help_text="square 1:1")
+    cover = models.ImageField(u'cover', upload_to=section_path,
+            blank=True, null=True, help_text="wide 16:9")
 
     class Meta:
         verbose_name=u"section"
@@ -33,6 +37,8 @@ class Section(models.Model):
             this = Section.objects.get(id=self.id)
             if this.img != self.img:
                 this.img.delete(save=False)
+            if this.cover != self.cover:
+                this.cover.delete(save=False)
         except:
             pass
         super(Section, self).save(*args, **kwargs)
@@ -42,12 +48,13 @@ class Section(models.Model):
 @receiver(pre_delete, sender=Section)
 def section_delete(sender, instance, **kwargs):
 	instance.img.delete(False)
+	instance.cover.delete(False)
 
 def collection_path(instance, filename):
 	filename = filename.replace(" ", "")
 	if len(filename) > 100:
 		filename = filename[:99]
-	return 'collectons/{0}/{1}'.format(instance.url, filename)
+	return 'collectons/{0}/{1}'.format(instance.slug, filename)
 
 class Collection(models.Model):
     pos = models.IntegerField(u'position', default=0)
@@ -55,6 +62,8 @@ class Collection(models.Model):
     title = models.CharField(u'name', max_length=140)
     slug = models.SlugField('slug', max_length=50,
             help_text="http://hamsabala.ru/slug/slug")
+    description = models.TextField("description",
+            blank=True, null=True)
     created = models.DateField(u'created',auto_now=False,
             auto_now_add=True)
     modified = models.DateField(u'modified',auto_now=True,
@@ -89,7 +98,7 @@ def product_path(instance, filename):
 	filename = filename.replace(" ", "")
 	if len(filename) > 100:
 		filename = filename[:99]
-	return 'products/{0}/{1}'.format(instance.url, filename)
+	return 'products/{0}/{1}'.format(instance.collection.title, filename)
 
 class Product(models.Model):
     pos = models.IntegerField(u'position', default=0)

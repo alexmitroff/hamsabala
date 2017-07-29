@@ -2,80 +2,32 @@
 {% load staticfiles %}
 {% block title %}{% endblock %}
 {% block page %}
-<section id="title" class="space">
+<section id="title" class="space" {% if section.cover %}style="background-image:url({{section.cover.url}})"{% endif %}>
     <article class="container">
-            <div class="logo">{% include "include/logo.html"  %}</div>
-            <h1>hamsa bala</h1>
-            <p>Натуральная смесь трав, масел, смол, цветов и ароматных древесных опилок.</p>
-            <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
+        <h1>{{section.title}}</h1>
+        <p>{{section.description}}</p>
     </article>
 </section>
-<section id="collections" class="space">
-    <div class="container cards">
-        {% for c in sections %}
+{% for c in collections %}
+<section class="cards">
+    {% for i in c %}
         <article class="card collection" style="background-image:url(
-            {% if c.img %}
-                {{c.img.url}}
+            {% if i.img %}
+                {{i.img.url}}
             {%else%}
                 {% static 'img/default/box.png' %}
             {%endif%})">
-            <header><h2>{{c.title}}</h2></header>
+            <header><h2>{{i.collection.title}}</h2></header>
             <hr/>
             <main>
-                <a href=#! >к коллекциям</a>
+            <p>{{i.name}}</p>
             </main>
         </article>
-        {% empty %}
-        {% endfor %}
-    </div>  
+    {% empty %}
+    {% endfor %} 
 </section>
-<section id="about">
-    <div class="container">
-        <div>
-            <article class="panel">
-                <header>
-                    <h2>О нас</h2>
-                </header>    
-                <p>
-                С 2009 года мы предлагаем вам уникальные высококачественные товары.</p> 
-                <p>Как мы отбираем их? Для нас важны натуральность, качество, ручной труд, этичный бизнес и&nbsp;ответственное отношение к&nbsp;окружающей среде. 
-                Знак Hamsa&nbsp;Bala не&nbsp;только гарантирует качество сырья, но&nbsp;также обеспечивает качество производственного процесса, 
-                производственную среду, использование квалифицированных работников и&nbsp;исключение детского труда. 
-                Мы выбираем только соответствующие этим критериям и&nbsp;созданные с&nbsp;любовью товары.
-                Мы начали свои поиски лучших товаров для вас с&nbsp;Индии, но&nbsp;наша цель&nbsp;&mdash; находить самое лучшее по&nbsp;всему миру.
-                Наша&nbsp;миссия: давать людям только самое лучшее.</p>
-                <p>
-                Сейчас областью интересов проекта являются благовония, народные промыслы, промыслы Кашмира: шкатулки, уникальные подставки под благовония, платки, шали, и&nbsp;этот список постоянно расширяется.
-                </p>
-            </article>
-            <section class="imgs">
-                <div style="background-image:url({% static 'img/backgrounds/dust.jpg' %});"></div>
-                <div style="background-image:url({% static 'img/backgrounds/forest.jpg' %});"></div>
-            </section>
-        </div>
-        <div>
-            <section class="imgs">
-                <div class="half" style="background-image:url({% static 'img/backgrounds/spice.jpg' %});"></div>
-            </section>
-            <article class="panel"></article>
-        </div>
-    </div>
-</section>
-<section class="feedback">
-            <h2>Обратная связь</h2>
-            <hr/>
-        <form>
-                <input type="text" name="name" id="id_name" placeholder="имя" required/>
-                <input type="email" name="email" id="id_email" placeholder="почта" required/>
-                <input type="text" name="subject" id="id_subject" placeholder="тема" required/>
-                <textarea name="text" id="id_text" required></textarea>
-                <input type="submit" value="отправить" />
-        </form>
-</section>
-<section id="retail" class="space">
-</section>
-<section id="contacts">
-</section>
+{% empty %}
+{% endfor %}
 {% endblock %}
 {% block templates %}{% endblock %}
 {% block scripts %}{% endblock %}
