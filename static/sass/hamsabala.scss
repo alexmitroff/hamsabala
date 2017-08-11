@@ -8,10 +8,12 @@ $space-size:3vw;
 $space-half:$space-size/2;
 
 @mixin card-size($count){
-    $size: (100vw - $space-size)/$count - .1vw;
+    $size: (100vw - $space-size)/$count - .15vw;
     height: $size;
     width: $size;
 }
+
+$card-border:$space-half solid $space-color;
 
 $square4: (100vw - $space-size*2)/4;
 $square2: (100vw - $space-size*2)/2;
@@ -244,6 +246,7 @@ hr{
         padding:1rem;
         width:100vw;
         height:100vw;
+        border-bottom:$card-border;
         h2,
         main{
             text-align:center;
@@ -292,7 +295,7 @@ p{
         h1{
             text-transform:uppercase;
             color:$main-color;
-            font-size:5.5rem;
+            font-size:15vw;
             margin-bottom:2vh;
             text-align:center;
         }
@@ -508,7 +511,24 @@ $retail-border:.2rem solid $space-color;
 
 
 /* Rules for mobile horisontal and tablet vertical */
-@media (min-width:560px) and (max-width:767px) {}
+@media (min-width:560px) and (max-width:767px) {
+    #title{
+        >.container{
+            h1{
+                font-size:5rem;
+            }
+        }
+    }
+    .cards{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        .card{
+            @include card-size(2);
+            border: $card-border;
+        }
+    }
+}
 
 /* Rules commot to screens bigger than tablet screens */
 @media (min-width:768px){
@@ -521,8 +541,8 @@ $retail-border:.2rem solid $space-color;
         >main{
             padding: 0 $space-half;
             >section{
-                border-right:$space-half solid $space-color;
-                border-left:$space-half solid $space-color;
+                border-right:$card-border;
+                border-left:$card-border;
             }
         }
 
@@ -542,17 +562,13 @@ $retail-border:.2rem solid $space-color;
     #mobile-menu-button{display:none;}
     #title{
         background-attachment:fixed;
-    }
-    
-    .cards{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:flex-start;
-        .card{
-            @include card-size(4);
-            border: $space-half solid $space-color;
+        >.container{
+            h1{
+                font-size:5.5rem;
+            }
         }
     }
+    
 
     #about{
         > .container{
@@ -633,15 +649,43 @@ $retail-border:.2rem solid $space-color;
 }
 
 /* Rules for tablet horisontal and small ultrabook screens */
-@media (min-width:768px) and (max-width:919px) {}
+@media (min-width:768px) and (max-width:919px) {
+    .cards{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        .card{
+            @include card-size(2);
+            border: $card-border;
+        }
+    }
+}
 
 /* Rules for middle screens */
 @media (min-width:920px) and (max-width:1199px) {
+    .cards{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        .card{
+            @include card-size(4);
+            border: $card-border;
+        }
+    }
 }
 
 /* Rules for large screens */
 @media (min-width:1200px) {
     .panel{width:50%;}
+    .cards{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        .card{
+            @include card-size(4);
+            border: $card-border;
+        }
+    }
 
 }
 
