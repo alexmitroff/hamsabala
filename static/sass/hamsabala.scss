@@ -5,8 +5,14 @@ $font-color:rgba(83,86,90,1); /* Pantone Cool Gray 11 C */
 
 $space-color:rgba(217,217,214,1); /* Pantone Cool Gray 1 C */
 $space-size:3vw;
+$space-half:$space-size/2;
 
-$card-size: (100vw - $space-size*4)/3;
+@mixin card-size($count){
+    $size: (100vw - $space-size)/$count - .1vw;
+    height: $size;
+    width: $size;
+}
+
 $square4: (100vw - $space-size*2)/4;
 $square2: (100vw - $space-size*2)/2;
 
@@ -33,10 +39,6 @@ a{
 
 a:hover, a:focus{
     color:$font-color;
-}
-
-.space{
-    margin-bottom:$space-size;
 }
 
 html{
@@ -242,7 +244,6 @@ hr{
         padding:1rem;
         width:100vw;
         height:100vw;
-        margin-bottom:$space-size;
         h2,
         main{
             text-align:center;
@@ -299,8 +300,12 @@ p{
         p{
             color:$main-color;
             font-size:1.5rem;
-            margin-bottom:10vh;
             text-align:center;
+            margin:0;
+        }
+
+        .button{
+            margin:10vh 0 0 0;
         }
     }
 }
@@ -514,15 +519,23 @@ $retail-border:.2rem solid $space-color;
             }
         >header,
         >main{
-            padding: 0 $space-size;
+            padding: 0 $space-half;
+            >section{
+                border-right:$space-half solid $space-color;
+                border-left:$space-half solid $space-color;
+            }
         }
-        > footer{
+
+        >main {
+            padding-bottom:$space-half;
+        }
+        >footer{
             padding:5rem 1rem;
         }            
     }
 
     nav {
-        padding:0;
+        padding:0 $space-half;
         justify-content: flex-start;
         > ul{display:flex; flex-direction:row;}
     }
@@ -530,13 +543,14 @@ $retail-border:.2rem solid $space-color;
     #title{
         background-attachment:fixed;
     }
+    
     .cards{
         flex-direction:row;
         flex-wrap:wrap;
+        justify-content:flex-start;
         .card{
-            width:$card-size;
-            height:$card-size;
-            margin:0 0 $space-size 0;            
+            @include card-size(4);
+            border: $space-half solid $space-color;
         }
     }
 
@@ -573,7 +587,7 @@ $retail-border:.2rem solid $space-color;
             > div {
                 width:$square4;
                 min-height:$square4;
-                height:100%;
+                height:auto;
                 border-bottom:none;
                 border-right:$retail-border;
             }
@@ -634,3 +648,12 @@ $retail-border:.2rem solid $space-color;
 nav > ul.active{
     display:flex;
 }
+
+.space{
+    margin-bottom:$space-half;
+}
+
+.borderless{
+    border:none;
+}
+
