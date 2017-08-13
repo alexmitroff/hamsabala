@@ -246,7 +246,6 @@ hr{
         padding:1rem;
         width:100vw;
         height:100vw;
-        border-bottom:$card-border;
         h2,
         main{
             text-align:center;
@@ -525,7 +524,6 @@ $retail-border:.2rem solid $space-color;
         justify-content:flex-start;
         .card{
             @include card-size(2);
-            border: $card-border;
         }
     }
 }
@@ -539,15 +537,11 @@ $retail-border:.2rem solid $space-color;
             }
         >header,
         >main{
-            padding: 0 $space-half;
-            >section{
-                border-right:$card-border;
-                border-left:$card-border;
-            }
+            padding: 0 $space-size;
         }
 
         >main {
-            padding-bottom:$space-half;
+            padding-bottom:$space-size;
         }
         >footer{
             padding:5rem 1rem;
@@ -555,7 +549,7 @@ $retail-border:.2rem solid $space-color;
     }
 
     nav {
-        padding:0 $space-half;
+        padding:0;
         justify-content: flex-start;
         > ul{display:flex; flex-direction:row;}
     }
@@ -656,7 +650,6 @@ $retail-border:.2rem solid $space-color;
         justify-content:flex-start;
         .card{
             @include card-size(2);
-            border: $card-border;
         }
     }
 }
@@ -669,7 +662,6 @@ $retail-border:.2rem solid $space-color;
         justify-content:flex-start;
         .card{
             @include card-size(4);
-            border: $card-border;
         }
     }
 }
@@ -683,7 +675,6 @@ $retail-border:.2rem solid $space-color;
         justify-content:flex-start;
         .card{
             @include card-size(4);
-            border: $card-border;
         }
     }
 
@@ -694,7 +685,7 @@ nav > ul.active{
 }
 
 .space{
-    margin-bottom:$space-half;
+    margin-bottom:$space-size;
 }
 
 .borderless{
