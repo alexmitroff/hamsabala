@@ -7,10 +7,14 @@ $space-color:rgba(217,217,214,1); /* Pantone Cool Gray 1 C */
 $space-size:3vw;
 $space-half:$space-size/2;
 
+@mixin card-size-borderless($count){
+    $size: (100vw - ($space-size)*($count - 1))/$count;
+    grid-auto-rows: $size*1.7;
+}
+
 @mixin card-size($count){
-    $size: (100vw - $space-size)/$count - .15vw;
-    height: $size;
-    width: $size;
+    $size: (100vw - ($space-size)*($count + 1))/$count;
+    grid-auto-rows: $size*1.7;
 }
 
 $card-border:$space-half solid $space-color;
@@ -238,16 +242,44 @@ hr{
 }
 
 .cards{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+    display:grid;
+    grid-gap: $space-size;
+    grid-template-columns:100vw;
+    grid-auto-rows: 170vw;
     > .card{
         background-color:$light-color;
-        padding:1rem;
-        width:100vw;
-        height:100vw;
+        display:flex;
+        flex-direction:column;
+        > div{
+            position:relative;
+            display:block;
+        }
+        > .header{
+            flex-grow:1;
+            display:flex;
+            flex-direction:column; 
+            >div{
+                flex-grow:1;
+                padding:1rem 1rem 0 1rem;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                opacity:0;
+                background-color:rgba(255,255,255,0.75);
+                transition:$link-transition;
+            }
+
+        }
+
+        > .main{
+            padding:2rem 1rem 1rem 1rem;
+        }
+        
+
+        
         h2,
-        main{
+        p{
             text-align:center;
         }
 
@@ -279,7 +311,7 @@ p{
 
 .collection{
     background-image:url(../img/default/box.png);
-    background-size:contain;
+    background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 }
@@ -290,6 +322,11 @@ p{
         min-height:80vh;
         justify-content:center;
         flex-direction:column;
+        
+        header{
+            padding:2rem;
+            background-color:rgba(255,255,255,.75);
+        }
 
         h1{
             text-transform:uppercase;
@@ -519,11 +556,9 @@ $retail-border:.2rem solid $space-color;
         }
     }
     .cards{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:flex-start;
+        grid-template-columns:repeat(2, 1fr);
+        @include card-size-borderless(2);
         .card{
-            @include card-size(2);
         }
     }
 }
@@ -540,9 +575,6 @@ $retail-border:.2rem solid $space-color;
             padding: 0 $space-size;
         }
 
-        >main {
-            padding-bottom:$space-size;
-        }
         >footer{
             padding:5rem 1rem;
         }            
@@ -645,11 +677,9 @@ $retail-border:.2rem solid $space-color;
 /* Rules for tablet horisontal and small ultrabook screens */
 @media (min-width:768px) and (max-width:919px) {
     .cards{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:flex-start;
+        grid-template-columns:repeat(2, 1fr);
+        @include card-size(2);
         .card{
-            @include card-size(2);
         }
     }
 }
@@ -657,11 +687,22 @@ $retail-border:.2rem solid $space-color;
 /* Rules for middle screens */
 @media (min-width:920px) and (max-width:1199px) {
     .cards{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:flex-start;
+        grid-template-columns:repeat(4, 1fr);
+        @include card-size(4);
         .card{
-            @include card-size(4);
+            > .main{
+                display:none;
+            }
+        }
+
+        .card:hover,
+        .card:focus{
+            > .header{
+                > div{
+                    opacity:1;
+                    padding-bottom:1rem;
+                }
+            }
         }
     }
 }
@@ -670,12 +711,23 @@ $retail-border:.2rem solid $space-color;
 @media (min-width:1200px) {
     .panel{width:50%;}
     .cards{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:flex-start;
+        grid-template-columns:repeat(4, 1fr);
+        @include card-size(4);
         .card{
-            @include card-size(4);
+            > .main{
+                display:none;
+            }
         }
+
+        .card:hover,
+        .card:focus{
+            > .header{
+                > div{
+                    opacity:1;
+                    padding-bottom:1rem;
+                }
+           }
+       }   
     }
 
 }

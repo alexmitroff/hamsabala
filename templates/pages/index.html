@@ -10,21 +10,29 @@
             <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
     </article>
 </section>
-<section id="collections" class="borderless space">
-    <div class="container cards">
+<section id="collections" class="space">
+    <div class="cards">
         {% for c in sections %}
-        <article class="card collection" style="background-image:url(
+        <a href="{% url 'section' c.slug %}" class="card"> 
+            <div class="header collection"
+            style="background-image:url(
             {% if c.img %}
                 {{c.img.url}}
             {%else%}
                 {% static 'img/default/box.png' %}
             {%endif%})">
-            <header><h2>{{c.title}}</h2></header>
-            <hr/>
-            <main>
-            <a href="{% url 'section' c.slug %}" >к коллекциям</a>
-            </main>
-        </article>
+                <div>
+                    <h2>{{c.title}}</h2>
+                    <hr/>
+                    <p>к коллекциям</p>
+                </div>
+            </div>
+            <div class="main">
+                <h2>{{c.title}}</h2>
+                <hr/>
+                <p>к коллекциям</p>
+            </div>
+        </a>
         {% empty %}
         {% endfor %}
     </div>  
