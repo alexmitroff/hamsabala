@@ -113,7 +113,7 @@ class Product(models.Model):
             blank=True, null=True)
     price = models.DecimalField(u'price', max_digits=6, decimal_places=2)
     img = models.ImageField(u'cover',
-            upload_to=collection_path,
+            upload_to=product_path,
             blank=True, null=True)
     created = models.DateField(u'created',auto_now=False, 
             auto_now_add=True)
