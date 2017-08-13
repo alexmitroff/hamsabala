@@ -7,13 +7,24 @@ $space-color:rgba(217,217,214,1); /* Pantone Cool Gray 1 C */
 $space-size:3vw;
 $space-half:$space-size/2;
 
+
+@mixin card-size-borderless-square($count){
+$size: (100vw - ($space-size)*($count - 1))/$count;
+    grid-auto-rows: $size;
+}
+
+@mixin card-size-square($count){
+$size: (100vw - ($space-size)*($count - 1))/$count;
+    grid-auto-rows: $size;
+}
+
 @mixin card-size-borderless($count){
-    $size: (100vw - ($space-size)*($count - 1))/$count;
+$size: (100vw - ($space-size)*($count - 1))/$count;
     grid-auto-rows: $size*1.7;
 }
 
 @mixin card-size($count){
-    $size: (100vw - ($space-size)*($count + 1))/$count;
+$size: (100vw - ($space-size)*($count - 1))/$count;
     grid-auto-rows: $size*1.7;
 }
 
@@ -286,6 +297,10 @@ hr{
     }
 }
 
+.cards-square{
+    grid-auto-rows: 100vw;
+}
+
 p{
     margin-bottom:1rem;
 }
@@ -324,15 +339,18 @@ p{
         flex-direction:column;
         
         header{
-            padding:2rem;
+            padding:1rem;
             background-color:rgba(255,255,255,.75);
+            > section{
+                border:.1rem solid $main-color;
+                padding:3rem;
+            }
         }
 
         h1{
             text-transform:uppercase;
             color:$main-color;
             font-size:15vw;
-            margin-bottom:2vh;
             text-align:center;
         }
 
@@ -340,7 +358,7 @@ p{
             color:$main-color;
             font-size:1.5rem;
             text-align:center;
-            margin:0;
+            margin: 2vh 0 0 0;
         }
 
         .button{
@@ -561,6 +579,10 @@ $retail-border:.2rem solid $space-color;
         .card{
         }
     }
+
+    .cards-square{
+        @include card-size-borderless-square(2);
+    }
 }
 
 /* Rules commot to screens bigger than tablet screens */
@@ -679,8 +701,10 @@ $retail-border:.2rem solid $space-color;
     .cards{
         grid-template-columns:repeat(2, 1fr);
         @include card-size(2);
-        .card{
-        }
+    }
+
+    .cards-square{
+        @include card-size-square(2);
     }
 }
 
@@ -705,6 +729,10 @@ $retail-border:.2rem solid $space-color;
             }
         }
     }
+
+    .cards-square{
+        @include card-size-square(4);
+    }
 }
 
 /* Rules for large screens */
@@ -728,6 +756,9 @@ $retail-border:.2rem solid $space-color;
                 }
            }
        }   
+    }
+    .cards-square{
+        @include card-size-square(4);
     }
 
 }

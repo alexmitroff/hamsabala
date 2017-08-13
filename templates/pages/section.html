@@ -3,10 +3,12 @@
 {% block title %}{% endblock %}
 {% block page %}
 <section id="title" class="space" {% if section.cover %}style="background-image:url({{section.cover.url}})"{% endif %}>
-    <article class="container">
+    <article class="container section">
         <header>
-            <h1>{{section.title}}</h1>
-            <p>{{section.description}}</p>
+            <section>
+                <h1>{{section.title}}</h1>
+                <p>Попробуй настоящее!</p>
+            </section>
         </header>
     </article>
 </section>
