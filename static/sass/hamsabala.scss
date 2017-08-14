@@ -28,6 +28,13 @@ $size: (100vw - ($space-size)*($count - 1))/$count;
     grid-auto-rows: $size*1.7;
 }
 
+$retail-offset:6rem;
+$retail-border:.1vw;
+
+@mixin city-height($count){
+    min-height:(100vw - ($space-size * 2) - $retail-border*($count - 1))/$count;
+}
+
 $card-border:$space-half solid $space-color;
 
 $square4: (100vw - $space-size*2)/4;
@@ -502,47 +509,56 @@ p{
     background-color:#eee;
 }
 
-$retail-offset:6rem;
-$retail-border:.2rem solid $space-color;
+
 #retail{
-    background-color:$light-color;
+    display:grid;
+    grid-gap:.2rem;
+    grid-template-columns:100vw;
+    
     > .retail-title{
         height:$retail-offset;
         display:flex;
         justify-content:center;
         align-items:center;
-        border-bottom:$retail-border;
+        background-color:$light-color;
+        
+        grid-row-start:1;
+        grid-row-end:2;
     }
 
-    > .cities{
+    > .city{
+        background-color:$light-color;
+        min-height:100vw;
         display:flex;
         flex-direction:column;
-        
-        > div{
-            padding: ($space-size+1vw) 1rem;
-            width:100vw;
-            height:100vw;
-            background-color:$light-color;
-            border-bottom:$retail-border;
+        > header{
+            padding:1rem;
+        }
+        > main {
+            flex-grow:1;
             display:flex;
             flex-direction:column;
-            justify-content:space-between;
-            align-items:center;
-            h3, h4{
-                text-align:center;
-            }
-
-            > div{
-                flex-grow:1;
-                display:flex;
-                flex-direction:column;
-                justify-content:center;
-                align-items:center;
+            justify-content:center;
+            align-items:center; 
+            > section{
+                > h4{
+                    text-align:center;
+                }
             }
         }
 
-        > div:last-child{
-            border-bottom:none;
+        > footer{
+            padding:1rem;
+
+        }
+        ul{
+            padding:0;
+            list-style-type:none;
+            
+            > li:before{
+                font-family: FontAwesome;
+                content: "\f041\00a0";                
+            }
         }
 
     }
@@ -582,6 +598,18 @@ $retail-border:.2rem solid $space-color;
 
     .cards-square{
         @include card-size-borderless-square(2);
+    }
+
+    #retail{
+        grid-template-columns:repeat(2, 1fr);
+        > .retail-title{
+            grid-column-start:1;
+            grid-column-end:3;
+        }
+
+        > .city{
+            min-height:50vw;
+        }
     }
 }
 
@@ -706,6 +734,18 @@ $retail-border:.2rem solid $space-color;
     .cards-square{
         @include card-size-square(2);
     }
+    
+    #retail{
+        grid-template-columns:repeat(2, 1fr);
+        > .retail-title{
+            grid-column-start:1;
+            grid-column-end:3;
+        }
+
+        > .city{
+            @include city-height(2);
+        }
+    }
 }
 
 /* Rules for middle screens */
@@ -732,6 +772,18 @@ $retail-border:.2rem solid $space-color;
 
     .cards-square{
         @include card-size-square(4);
+    }
+
+    #retail{
+        grid-template-columns:repeat(4, 1fr);
+        > .retail-title{
+            grid-column-start:1;
+            grid-column-end:5;
+        }
+
+        > .city{
+            @include city-height(4);
+        }
     }
 }
 
@@ -761,6 +813,17 @@ $retail-border:.2rem solid $space-color;
         @include card-size-square(4);
     }
 
+    #retail{
+        grid-template-columns:repeat(4, 1fr);
+        > .retail-title{
+            grid-column-start:1;
+            grid-column-end:5;
+        }
+
+        > .city{
+            @include city-height(4);
+        }
+    }
 }
 
 nav > ul.active{

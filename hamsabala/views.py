@@ -52,9 +52,19 @@ def index(request):
     template = 'pages/index.html'
     sections = Section.objects.filter(show=True)
     cities = City.objects.filter(show=True)
+    retail = []
+    for c in cities:
+        item = {}
+        item["shops"] = Partner.objects.filter(show=True, frontpage=True, city=c.pk)[:3]
+        item["city"] = c
+        item["more"] = False
+        if Partner.objects.filter(show=True, city=c.pk).count() > 3:
+            item["more"] = True
+        retail.append(item)
+
     var = {
             "sections":sections,
-            "cities":cities,
+            "retail":retail,
             }
     return render(request, template, var)
 

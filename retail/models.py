@@ -22,6 +22,7 @@ class City(models.Model):
 class Partner(models.Model):
     pos = models.IntegerField("position",default=0)
     show = models.BooleanField("show", default = True) 
+    frontpage = models.BooleanField("frontpage", default = False, help_text="Show on front page") 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE,

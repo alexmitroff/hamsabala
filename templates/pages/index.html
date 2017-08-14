@@ -82,30 +82,32 @@
 </section>
 <section id="retail" class="space">
     <div class="retail-title"><h2>Где купить благовония Hamsa Bala</h2></div>
-    <div class="cities">
-        {% for c in cities %}
-            <div>
-                <h3>{{c.name}}</h3>
-                <hr/>
-                <div>
-                {% for i in c.partner_set.all %}
-                <section>
-                    <h4>{{i.name}}</h4>
-                    <p>{{i.address}}</p>
-                </section>    
-                {% empty %}
-                    <p>Comming soon...</p>
-                {% endfor %}
-                </div>
-                {% if c.partner_set.count > 3 %}
-                <a href="#!">Полный список</a>
-                {% endif %}
-            </div>
+    {% for c in retail %}
+    <article class="city">
+        <header>
+        <h3>{{c.city.name}}</h3>
+        <hr/>
+        </header>
+        <main>
+        {% for i in c.shops %}
+            <section>
+                <h4>{{i.name}}</h4>
+                <p>{{i.address|safe}}</p>
+            </section>    
         {% empty %}
+            <section>
+                <p>Comming soon...</p>
+            </section>
         {% endfor %}
-    </div>        
-</section>
-<section id="contacts">
+        </main>
+        <footer>
+            {% if c.more %}
+            <a class="button" href="#!">Полный список</a>
+            {% endif %}
+        </footer>    
+    </article>        
+    {% empty %}
+    {% endfor %}
 </section>
 {% endblock %}
 {% block templates %}{% endblock %}
