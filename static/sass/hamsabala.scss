@@ -100,7 +100,8 @@ body{
 
     > main{
         flex-grow:1;
-        display:block;
+        display:flex;
+        flex-direction:column;
     }
 
     > footer{
@@ -339,11 +340,11 @@ p{
 }
 
 #title{
-    background-image:$back-title;
+    background-color:$light-color;
     > .container{
-        min-height:80vh;
         justify-content:center;
         flex-direction:column;
+        padding:1rem;
         
         header{
             padding:1rem;
@@ -371,6 +372,13 @@ p{
         .button{
             margin:10vh 0 0 0;
         }
+    }
+}
+
+.title-image{
+    background-image:$back-title;
+    > .container{
+        min-height:80vh;
     }
 }
 
@@ -464,6 +472,25 @@ p{
     }
 }
 
+#collections{
+    display:grid;
+    grid-gap:$space-size;
+
+    > article{
+        padding:1rem;
+        background-color:$light-color;
+        >main{
+            padding: 1rem 0;
+        }
+        >main,
+        > footer{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
+    }
+}
 
 #instagram{
     min-height:$square2;
@@ -509,10 +536,11 @@ p{
     background-color:#eee;
 }
 
+$retail-gap:.2rem;
 
 #retail{
     display:grid;
-    grid-gap:.2rem;
+    grid-gap:$retail-gap;
     grid-template-columns:100vw;
     
     > .retail-title{
@@ -551,18 +579,73 @@ p{
             padding:1rem;
 
         }
-        ul{
-            padding:0;
-            list-style-type:none;
-            
-            > li:before{
-                font-family: FontAwesome;
-                content: "\f041\00a0";                
-            }
-        }
 
     }
 }
+
+#retail-menu{
+    font-size:1.1rem;
+
+    > a {
+        min-height:3rem;
+        height:$space-size;
+        display:block;
+        width:50%;
+    }
+}
+
+#shops{
+    display:grid;
+    flex-grow:1;
+    grid-template-columns:100vw;
+    align-content:start;
+    grid-gap:$retail-gap;
+    > nav {
+        background-color:$light-color;
+        border-bottom:$space-size  solid $space-color;
+        > ul {
+            width:100%;
+            display:flex;
+            align-items:center;
+            justify-content:space-around;
+            > li {
+                min-height:3rem;
+                height:$space-size;            
+            }
+        }
+    }
+
+    > article{
+        background-color:$light-color;
+        display:flex;
+        flex-direction:column;
+        > header,
+        > footer,
+        > main{
+            padding:1rem;
+            display:flex;
+            flex-direction:column;
+        }
+        > main{
+            flex-grow:1;
+            padding-top:0;
+        }
+    }
+}
+
+.address ul{
+    padding:0;
+    list-style-type:none;
+    > li:before{
+    font-family: FontAwesome;
+    content: "\f041\00a0\00a0";                
+    }
+
+    > li{
+        padding-bottom:1rem;
+    }
+}
+
 
 .panel{
     background-color:$light-color;
@@ -611,6 +694,18 @@ p{
             min-height:50vw;
         }
     }
+
+    #shops{
+        grid-template-columns:repeat(2, 1fr);
+        > nav{
+            grid-column-start:1; 
+            grid-column-end:3;
+        }
+    }
+
+    #collections{
+        grid-template-columns:repeat(2, 1fr);
+    }
 }
 
 /* Rules commot to screens bigger than tablet screens */
@@ -624,7 +719,9 @@ p{
         >main{
             padding: 0 $space-size;
         }
-
+        > main {
+            padding-top:$space-size;
+        }
         >footer{
             padding:5rem 1rem;
         }            
@@ -672,24 +769,6 @@ p{
         }
     }
     
-    #retail{
-
-        > .cities{
-            flex-direction:row;
-            > div {
-                width:$square4;
-                min-height:$square4;
-                height:auto;
-                border-bottom:none;
-                border-right:$retail-border;
-            }
-
-            > div:last-child{
-                border-right:none;
-            }
-        }
-    }
-    
     .feedback{
         padding:6rem $square4;
         > form{
@@ -722,6 +801,9 @@ p{
             height:$square4;
         }
     }
+    #collections{
+        grid-template-columns:repeat(2, 1fr);
+    }
 }
 
 /* Rules for tablet horisontal and small ultrabook screens */
@@ -744,6 +826,14 @@ p{
 
         > .city{
             @include city-height(2);
+        }
+    }
+    
+    #shops{
+        grid-template-columns:repeat(2, 1fr);
+        > nav{
+            grid-column-start:1;
+            grid-column-end:3;
         }
     }
 }
@@ -785,6 +875,14 @@ p{
             @include city-height(4);
         }
     }
+    
+    #shops{
+        grid-template-columns:repeat(4, 1fr);
+        > nav{
+            grid-column-start:1;
+            grid-column-end:5;
+        }
+    }
 }
 
 /* Rules for large screens */
@@ -824,8 +922,26 @@ p{
             @include city-height(4);
         }
     }
+    
+    #shops{
+        grid-template-columns:repeat(4, 1fr);
+        > nav{
+            grid-column-start:1;
+            grid-column-end:5;
+        }
+    }
 }
 
+@media (min-width:2200px) {
+    #shops{
+        grid-template-columns:repeat(5, 1fr);
+        > nav{
+            grid-column-start:1;
+            grid-column-end:6;
+        }
+    }
+
+}
 nav > ul.active{
     display:flex;
 }

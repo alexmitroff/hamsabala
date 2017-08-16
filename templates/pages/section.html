@@ -1,8 +1,8 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
-{% block title %}{% endblock %}
+{% block title %}{{section.title}} | {% endblock %}
 {% block page %}
-<section id="title" class="space" {% if section.cover %}style="background-image:url({{section.cover.url}})"{% endif %}>
+<section id="title" class="title-image space" {% if section.cover %}style="background-image:url({{section.cover.url}})"{% endif %}>
     <article class="container section">
         <header>
             <section>
@@ -12,9 +12,22 @@
         </header>
     </article>
 </section>
+<section id="collections" class="space">
 {% for c in collections %}
-<section class="cards space">
-    {% for i in c %}
+{% if c.products|length > 0 %}
+<article>
+    <header><h2>{{c.collection.title}}</h2></header>
+    <main>{{c.collection.description|safe}}</main>
+    <footer><a href="#{{c.collection.slug}}">Перейти к коллекции</a></footer>
+</article>
+{% endif %}
+{% empty %}
+{% endfor %}
+</section>
+{% for c in collections %}
+{% if c.products|length > 0 %}
+<section id="{{c.collection.slug}}" class="cards space">
+    {% for i in c.products %}
         <a href=#! class="card">
             <div class="header collection"
             style="background-image:url(
@@ -38,6 +51,7 @@
     {% empty %}
     {% endfor %} 
 </section>
+{% endif %}
 {% empty %}
 {% endfor %}
 {% endblock %}

@@ -75,7 +75,7 @@ def section(request, section):
     products = []
     for c in collections:
         p = Product.objects.filter(show=True, section=section, collection=c)
-        products.append(p)
+        products.append({"collection":c, "products":p})
     var = {
             "section":section,
             "collections":products,
@@ -85,4 +85,16 @@ def section(request, section):
 def constraction(request):
     template = 'pages/constraction.html'
     var = {}
+    return render(request, template, var)
+
+def retail(request, city):
+    template = 'pages/retail.html'
+    city = City.objects.filter(slug=city).first()
+    cities = City.objects.filter(show=True)
+    shops = Partner.objects.filter(show=True, city=city.pk).order_by('name')
+    var = {
+            "city":city,
+            "cities":cities,
+            "shops":shops,
+            }
     return render(request, template, var)

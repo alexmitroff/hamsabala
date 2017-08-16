@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% block title %}Партнеры | {% endblock %}
+{% block page %}
+<section id="title" class="space">
+    <article class="container">
+            <div class="logo">{% include "include/logo.html"  %}</div>
+            <h1>Партнеры<br><small>{{city.name}}</small></h1>
+    </article>
+</section>
+{% if shops %}
+<section id="shops" class="space">
+    <nav id="retail-menu">
+        <ul>    
+        {% for c in cities %}
+        <li><a href="{% url "retail" c.slug %}">{{ c.name }}</a></li>
+        {% empty %}
+        {% endfor %}
+        </ul>
+    </nav>
+    {% for s in shops %}
+    <article>
+        <header>
+            <h2><a href="{{s.url}}">{{s.name}}</a></h2>
+        </header>
+        <main class="address">
+            {{s.address|safe}}
+        </main>
+    </article>
+    {% empty %}
+    {% endfor %}
+</section>
+{% else %}
+{% endif %}
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}

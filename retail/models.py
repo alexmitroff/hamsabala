@@ -6,6 +6,8 @@ class City(models.Model):
     show = models.BooleanField("show", default = True) 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
+    slug = models.SlugField('slug', max_length=50,
+            help_text="http://hamsabala.ru/slug/slug")
     created = models.DateField(u'created',auto_now=False, 
             auto_now_add=True)
     modified = models.DateField(u'modified',auto_now=True, 

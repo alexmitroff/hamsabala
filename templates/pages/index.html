@@ -2,15 +2,14 @@
 {% load staticfiles %}
 {% block title %}{% endblock %}
 {% block page %}
-<section id="title" class="space">
+<section id="title" class="title-image space">
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
             <h1>hamsa bala</h1>
             <p>Попробуй настоящее!</p>
-            <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
     </article>
 </section>
-<section id="collections" class="space">
+<section id="prods" class="space">
     <div class="cards">
         {% for c in sections %}
         <a href="{% url 'section' c.slug %}" class="card"> 
@@ -92,7 +91,7 @@
         {% for i in c.shops %}
             <section>
                 <h4>{{i.name}}</h4>
-                <p>{{i.address|safe}}</p>
+                <p class="address">{{i.address|safe}}</p>
             </section>    
         {% empty %}
             <section>
@@ -102,7 +101,7 @@
         </main>
         <footer>
             {% if c.more %}
-            <a class="button" href="#!">Полный список</a>
+            <a class="button" href="{% url "retail" c.city.slug %}">Полный список</a>
             {% endif %}
         </footer>    
     </article>        
