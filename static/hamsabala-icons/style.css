@@ -1,0 +1,70 @@
+@font-face {
+  font-family: 'hamsabala-icons';
+  src:  url('fonts/hamsabala-icons.eot?s10uvy');
+  src:  url('fonts/hamsabala-icons.eot?s10uvy#iefix') format('embedded-opentype'),
+    url('fonts/hamsabala-icons.ttf?s10uvy') format('truetype'),
+    url('fonts/hamsabala-icons.woff?s10uvy') format('woff'),
+    url('fonts/hamsabala-icons.svg?s10uvy#hamsabala-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'hamsabala-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hb-hb_animal-icon:before {
+  content: "\e900";
+  color: #102a83;
+}
+.hb-aroma-icon:before {
+  content: "\e901";
+  color: #102a83;
+}
+.hb-hb_ceremony-icon:before {
+  content: "\e902";
+  color: #102a83;
+}
+.hb-gift-icon:before {
+  content: "\e903";
+  color: #102a83;
+}
+.hb-meditation-icon:before {
+  content: "\e904";
+  color: #102a83;
+}
+.hb-prey-icon:before {
+  content: "\e905";
+  color: #102a83;
+}
+.hb-read-icon:before {
+  content: "\e906";
+  color: #102a83;
+}
+.hb-relax-icon:before {
+  content: "\e907";
+  color: #102a83;
+}
+.hb-swan-icon:before {
+  content: "\e908";
+  color: #102a83;
+}
+.hb-talk-icon:before {
+  content: "\e909";
+  color: #102a83;
+}
+.hb-veg-icon:before {
+  content: "\e90a";
+  color: #102a83;
+}

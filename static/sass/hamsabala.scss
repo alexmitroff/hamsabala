@@ -599,9 +599,8 @@ $retail-gap:.2rem;
     flex-grow:1;
     grid-template-columns:100vw;
     align-content:start;
-    grid-gap:$retail-gap;
+    background-color:$light-color;
     > nav {
-        background-color:$light-color;
         border-bottom:$space-size  solid $space-color;
         > ul {
             width:100%;
@@ -625,6 +624,7 @@ $retail-gap:.2rem;
             padding:1rem;
             display:flex;
             flex-direction:column;
+            align-items:center;
         }
         > main{
             flex-grow:1;
@@ -804,6 +804,13 @@ $retail-gap:.2rem;
     #collections{
         grid-template-columns:repeat(2, 1fr);
     }
+    #shops{
+        grid-template-columns:repeat(2, 1fr);
+        > nav{
+            grid-column-start:1;
+            grid-column-end:3;
+        }
+    }
 }
 
 /* Rules for tablet horisontal and small ultrabook screens */
@@ -829,13 +836,6 @@ $retail-gap:.2rem;
         }
     }
     
-    #shops{
-        grid-template-columns:repeat(2, 1fr);
-        > nav{
-            grid-column-start:1;
-            grid-column-end:3;
-        }
-    }
 }
 
 /* Rules for middle screens */
@@ -876,13 +876,6 @@ $retail-gap:.2rem;
         }
     }
     
-    #shops{
-        grid-template-columns:repeat(4, 1fr);
-        > nav{
-            grid-column-start:1;
-            grid-column-end:5;
-        }
-    }
 }
 
 /* Rules for large screens */
@@ -923,25 +916,10 @@ $retail-gap:.2rem;
         }
     }
     
-    #shops{
-        grid-template-columns:repeat(4, 1fr);
-        > nav{
-            grid-column-start:1;
-            grid-column-end:5;
-        }
-    }
 }
 
-@media (min-width:2200px) {
-    #shops{
-        grid-template-columns:repeat(5, 1fr);
-        > nav{
-            grid-column-start:1;
-            grid-column-end:6;
-        }
-    }
+@media (min-width:2200px) {}
 
-}
 nav > ul.active{
     display:flex;
 }
