@@ -6,7 +6,8 @@ from django.core.mail import EmailMessage
 
 from products.models import *
 from retail.models import *
-from .secret import DJ_EMAIL_USER as email_robot
+from .secret import DJ_EMAIL_USER
+from .secret import DJ_EMAIL_DESTINATION
 
 import urllib.request
 import json
@@ -124,8 +125,8 @@ def feedback(request):
         mail = EmailMessage(
                 'Feedback from '+name,
                 msg,
-                email_robot,
-                ['alarm-1@yandex.ru'],
+                DJ_EMAIL_USER,
+                [DJ_EMAIL_DESTINATION]
                 reply_to = [email],
                 )
         try:
