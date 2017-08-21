@@ -126,7 +126,7 @@ def feedback(request):
                 'Feedback from '+name,
                 msg,
                 DJ_EMAIL_USER,
-                [DJ_EMAIL_DESTINATION]
+                [DJ_EMAIL_DESTINATION,],
                 reply_to = [email],
                 )
         try:

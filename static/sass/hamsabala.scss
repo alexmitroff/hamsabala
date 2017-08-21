@@ -48,7 +48,7 @@ $link-transition: all .3s ease-out 0s;
 
 $back-title:url(../img/backgrounds/temple.jpg);
 $back-about:url(../img/backgrounds/grass.jpg);
-$back-contacts:url(../img/backgrounds/.jpg);
+$back-retail:url(../img/backgrounds/boy.jpg);
 /* Rules for small devices (mobile vertical) */
 
 * {
@@ -384,6 +384,10 @@ p{
     }
 }
 
+.title-retail{
+    background-image:$back-retail;
+}
+
 #about{
     > .container{
         flex-direction:column;
@@ -631,6 +635,17 @@ $retail-gap:.2rem;
 
 #retail-menu{
     font-size:1.1rem;
+    background-color:$light-color; 
+    > ul {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+        > li {
+            min-height:3rem;
+            height:$space-size;            
+        }
+    }    
 
     > a {
         min-height:3rem;
@@ -646,19 +661,7 @@ $retail-gap:.2rem;
     grid-template-columns:100vw;
     align-content:start;
     background-color:$light-color;
-    > nav {
-        border-bottom:$space-size  solid $space-color;
-        > ul {
-            width:100%;
-            display:flex;
-            align-items:center;
-            justify-content:space-around;
-            > li {
-                min-height:3rem;
-                height:$space-size;            
-            }
-        }
-    }
+    padding:$space-size 0;
 
     > article{
         background-color:$light-color;

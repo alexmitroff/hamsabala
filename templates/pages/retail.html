@@ -1,14 +1,13 @@
 {% extends 'base/base.html' %}
 {% block title %}Партнеры | {% endblock %}
 {% block page %}
-<section id="title" class="space">
+<section id="title" class="space title-retail">
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
             <h1>Партнеры<br><small>{{city.name}}</small></h1>
     </article>
 </section>
-{% if shops %}
-<section id="shops" class="space">
+<section class="space">
     <nav id="retail-menu">
         <ul>    
         {% for c in cities %}
@@ -17,6 +16,9 @@
         {% endfor %}
         </ul>
     </nav>
+</section>
+{% if shops %}
+<section id="shops" class="space">
     {% for s in shops %}
     <article>
         <header>
