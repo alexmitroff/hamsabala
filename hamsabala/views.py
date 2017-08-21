@@ -98,3 +98,6 @@ def retail(request, city):
             "shops":shops,
             }
     return render(request, template, var)
+
+def feedback(request):
+    return False 
