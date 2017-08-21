@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^(?P<section>\w+)/$', views.section, name='section'),
     url(r'^retail/(?P<city>\w+)/$', views.retail, name='retail'),
+    url(r'^api/feedback/$', views.feedback, name='feedback'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

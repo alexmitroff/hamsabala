@@ -72,6 +72,7 @@
             <h2>Обратная связь</h2>
             <hr/>
         <form id="feedback">
+                {% csrf_token %} 
                 <input type="text" name="name" id="id_name" placeholder="имя" required/>
                 <input type="email" name="email" id="id_email" placeholder="почта" required/>
                 <textarea name="text" id="id_text" required></textarea>
@@ -109,6 +110,12 @@
 </section>
 {% endblock %}
 {% block templates %}{% endblock %}
-{% block scripts %}{% endblock %}
+{% block scripts %}
+{% endblock %}
 {% block docready %}
+        $("#feedback").submit(function(event){
+            event.preventDefault();
+            feedback($(this));
+            return false;
+        });
 {% endblock %}

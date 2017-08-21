@@ -20,13 +20,17 @@ function getInsta(){
 function feedback(form){
     var data = form.serialize(),
         f = form[0];
+    console.log(data);
     $.ajax({
         type:"POST",
-        url:"http://hamsabala.ru/api/feedback/",
+        url:"/api/feedback/",
         data: data,
         success: function(response){
             f.reset();
             console.log(response);
-        }
+        },
+        error: function(jqXHR, exception){
+            console.log(jqXHR.responseText);
+        },
     });
 }

@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
+from django.core.mail import send_mail
 
 from products.models import *
 from retail.models import *
+from .secret import DJ_EMAIL_USER as email_robot
 
 import urllib.request
 import json
@@ -99,5 +103,28 @@ def retail(request, city):
             }
     return render(request, template, var)
 
+@csrf_protect
 def feedback(request):
-    return False 
+    if request.method == 'GET':
+        print("GET")
+    elif request.method == 'POST':
+        try:
+            name = request.POST['name']
+        except:
+            name = "Anonimus"
+        try:
+            email = request.POST['email']
+        except:
+            email = "anonimus-email"
+        try:
+            msg = request.POST['text']
+        except:
+            msg = "empty"
+
+        send_mail(
+                'Feedback from '+name,
+                msg,
+                email_robot,
+                ['alarm-1@yandex.ru']
+                )
+        return JsonResponse({'responce':'OK!'}, safe=False)     
