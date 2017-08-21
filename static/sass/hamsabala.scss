@@ -508,6 +508,34 @@ p{
             padding-bottom:1rem;
         }
     }
+
+    img{
+        display:block;
+        margin:0 auto;
+        min-height:6rem;
+        height:$space-size;
+    }
+    
+    >article.hamsabala{
+        background-image:url(../img/paper/craft.jpg);
+        background-position:center;
+    }
+
+    >article.aromapure{
+        background-color:$font-color;
+        > * {
+            border-color:$light-color;
+
+            > a {
+                color:$light-color;
+            }
+
+            > a:hover{
+                color:$space-color;
+            }
+
+        }    
+    }
 }
 
 #instagram{
@@ -950,7 +978,3 @@ nav > ul.active{
     border:none;
 }
 
-.hamsabala{
-    background-image:url(../img/paper/craft.jpg);
-    background-position:center;
-}
