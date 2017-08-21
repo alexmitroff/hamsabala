@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from products.models import *
 from retail.models import *
@@ -121,10 +121,16 @@ def feedback(request):
         except:
             msg = "empty"
 
-        send_mail(
+        mail = EmailMessage(
                 'Feedback from '+name,
                 msg,
                 email_robot,
-                ['alarm-1@yandex.ru']
+                ['alarm-1@yandex.ru'],
+                reply_to = [email],
                 )
-        return JsonResponse({'responce':'OK!'}, safe=False)     
+        try:
+            mail.send()
+            return JsonResponse({'responce':'#fb-success'}, safe=False)
+        except:
+            return JsonResponse({'responce':'#fb-error'}, safe=False)
+

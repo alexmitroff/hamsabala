@@ -64,7 +64,9 @@
             <section class="imgs">
                 <div class="half" style="background-image:url({% static 'img/backgrounds/boy.jpg' %});"></div>
             </section>
-            <article class="panel"></article>
+            <section class="imgs">
+                <div class="half" style="background-image:url({% static 'img/backgrounds/hb_candels.jpg' %});"></div>
+            </section>
         </div>
     </div>
 </section>
@@ -72,6 +74,8 @@
             <h2>Обратная связь</h2>
             <hr/>
         <form id="feedback">
+                <div id="fb-success" class="fb-responce">Письмо успешно отправленно!</div>
+                <div id="fb-error" class="fb-responce">Произошла ошибка. Попрбуйте позвонить по телефону: +7 911 005 56 56</div>
                 {% csrf_token %} 
                 <input type="text" name="name" id="id_name" placeholder="имя" required/>
                 <input type="email" name="email" id="id_email" placeholder="почта" required/>
@@ -91,7 +95,7 @@
         {% for i in c.shops %}
             <section>
                 <h4>{{i.name}}</h4>
-                <p class="address">{{i.address|safe}}</p>
+                <div class="address">{{i.address|safe}}</div>
             </section>    
         {% empty %}
             <section>

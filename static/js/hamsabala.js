@@ -26,11 +26,17 @@ function feedback(form){
         url:"/api/feedback/",
         data: data,
         success: function(response){
+            var obj = response['responce'];
             f.reset();
-            console.log(response);
+            $(obj).show();
+            function stop(){
+                $(obj).hide();
+                clearInterval(timer);
+            }
+            var timer = setTimeout(stop, 5000); 
         },
         error: function(jqXHR, exception){
-            console.log(jqXHR.responseText);
+            console.log(exception);
         },
     });
 }

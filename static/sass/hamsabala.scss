@@ -3,7 +3,7 @@ $light-color:rgba(255,255,255,1);
 $light-text-back:rgba(255,255,255,.9); 
 $font-color:rgba(83,86,90,1); /* Pantone Cool Gray 11 C */
 
-$space-color:rgba(217,217,214,1); /* Pantone Cool Gray 1 C */
+$space-color:lighten(rgba(217,217,214,1), 5%); /* Pantone Cool Gray 1 C */
 $space-size:3vw;
 $space-half:$space-size/2;
 
@@ -20,12 +20,12 @@ $size: (100vw - ($space-size)*($count - 1))/$count;
 
 @mixin card-size-borderless($count){
 $size: (100vw - ($space-size)*($count - 1))/$count;
-    grid-auto-rows: $size*1.7;
+    grid-auto-rows: $size*1.2;
 }
 
 @mixin card-size($count){
 $size: (100vw - ($space-size)*($count - 1))/$count;
-    grid-auto-rows: $size*1.7;
+    grid-auto-rows: $size*1.2;
 }
 
 $title-border:.1rem solid $main-color;
@@ -353,7 +353,7 @@ p{
             background-color:rgba(255,255,255,.75);
             > section{
                 border:$title-border;
-                padding:3rem;
+                padding:$space-size;
             }
         }
 
@@ -512,7 +512,7 @@ p{
     img{
         display:block;
         margin:0 auto;
-        min-height:6rem;
+        min-height:3rem;
         height:$space-size;
     }
     
@@ -822,16 +822,29 @@ $retail-gap:.2rem;
             justify-content:space-between;
             flex-wrap:wrap;
             align-items:center;
-
+            
+            .fb-responce,
             > input, 
             > textarea{
                 width:100%;
             }
 
+            .fb-responce{
+                padding:1rem;
+                color:$light-color;
+                margin-bottom:1rem;
+                text-align:center;
+                display:none;
+            }
+            
+            #fb-success{ background-color:#86A61F;}
+            #fb-error{ background-color:#822C3F;}
             #id_name,
             #id_email{
                 width:49%;
             }
+
+
         }
 
     }
