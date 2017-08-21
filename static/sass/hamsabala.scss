@@ -28,6 +28,8 @@ $size: (100vw - ($space-size)*($count - 1))/$count;
     grid-auto-rows: $size*1.7;
 }
 
+$title-border:.1rem solid $main-color;
+
 $retail-offset:6rem;
 $retail-border:.1vw;
 
@@ -350,7 +352,7 @@ p{
             padding:1rem;
             background-color:rgba(255,255,255,.75);
             > section{
-                border:.1rem solid $main-color;
+                border:$title-border;
                 padding:3rem;
             }
         }
@@ -480,7 +482,7 @@ p{
         padding:1rem;
         background-color:$light-color;
         >main{
-            padding: 1rem 0;
+            padding: 1rem;
         }
         >main,
         > footer{
@@ -488,6 +490,22 @@ p{
             flex-direction:column;
             justify-content:center;
             align-items:center;
+        }
+
+        >main,
+        >footer,
+        >header{
+            border-left:$title-border;
+            border-right:$title-border;
+        }
+
+        >header{
+            border-top:$title-border;
+            padding-top:1rem;
+        }
+        >footer{
+            border-bottom:$title-border;
+            padding-bottom:1rem;
         }
     }
 }
@@ -932,3 +950,7 @@ nav > ul.active{
     border:none;
 }
 
+.hamsabala{
+    background-image:url(../img/paper/craft.jpg);
+    background-position:center;
+}
