@@ -10,6 +10,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
         {% if not debug %}{% include  'include/analytics.html' %}{%endif%}
+        <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
     </head>
 
     <body>
@@ -25,7 +26,6 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&amp;subset=cyrillic" rel="stylesheet">  
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <!-- <link rel="stylesheet" href="{% static 'hamsabala-icons/style.css' %}"> -->
-        <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
         <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
         <script type="text/javascript" src="{% static 'js/hamsabala.js'  %}"></script>
         <script>
