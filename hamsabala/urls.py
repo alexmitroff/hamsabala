@@ -17,12 +17,23 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
 
 from hamsabala import views
+from .sitemap import *
+
+sitemaps = {
+            'static_pages':ViewSitemap,
+            'sections':SectionMap,
+            'retail': RetailMap,
+        }
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
+            name='django.contrib.sitemaps.views.sitemap'),
     url(r'^(?P<section>\w+)/$', views.section, name='section'),
     url(r'^retail/(?P<city>\w+)/$', views.retail, name='retail'),
     url(r'^api/feedback/$', views.feedback, name='feedback'),

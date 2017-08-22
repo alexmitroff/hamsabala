@@ -346,7 +346,7 @@ p{
     > .container{
         justify-content:center;
         flex-direction:column;
-        padding:1rem;
+        padding:1rem 1rem $space-size 1rem;
         
         header{
             padding:1rem;
@@ -439,9 +439,19 @@ p{
     }
 
     >form{    
-        display:flex;
-        flex-direction:column;
+        display:grid;
+        grid-gap:1rem;
         width:100%;
+            
+        .fb-responce{
+            padding:1rem;
+            color:$light-color;
+            margin-bottom:1rem;
+            text-align:center;
+            display:none;
+        }
+        #fb-success{ background-color:#86A61F;}
+        #fb-error{ background-color:#822C3F;}
 
 
         > input, 
@@ -449,7 +459,6 @@ p{
             border-radius:none;
             background:none;
             background-color:lighten( $space-color, 10%);
-            margin-bottom:1rem;
             padding:.5rem 1rem .6rem 1rem;
             border:.1rem solid $main-color;
             transition:$link-transition;
@@ -820,32 +829,23 @@ $retail-gap:.2rem;
     }
     
     .feedback{
-        padding:6rem $square4;
+        padding:6rem 0;
         > form{
-            flex-direction:row;
-            justify-content:space-between;
-            flex-wrap:wrap;
-            align-items:center;
-            
+           max-width:$square2;
+           margin:0 auto; 
+           
+           grid-template-columns:repeat(2, 1fr);
+
             .fb-responce,
-            > input, 
+            > input[type=submit], 
             > textarea{
-                width:100%;
+                grid-column-start:1;
+                grid-column-end:3;
             }
 
-            .fb-responce{
-                padding:1rem;
-                color:$light-color;
-                margin-bottom:1rem;
-                text-align:center;
-                display:none;
-            }
             
-            #fb-success{ background-color:#86A61F;}
-            #fb-error{ background-color:#822C3F;}
             #id_name,
             #id_email{
-                width:49%;
             }
 
 
