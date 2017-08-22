@@ -32,6 +32,7 @@ DEBUG = DJ_DEBUG
 
 ALLOWED_HOSTS = DJ_HOSTS
 
+ADMINS = DJ_ADMINS
 
 # Application definition
 
