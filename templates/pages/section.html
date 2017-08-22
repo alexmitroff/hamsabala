@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}{{section.title}} | {% endblock %}
+{% block page %}
+<section id="title" class="title-image space" {% if section.cover %}style="background-image:url({{section.cover.url}})"{% endif %}>
+    <article class="container section">
+        <header>
+            <section>
+                <h1>{{section.title}}</h1>
+                <p>Попробуй настоящее!</p>
+            </section>
+        </header>
+    </article>
+</section>
+<section id="collections" class="space">
+{% for c in collections %}
+{% if c.products|length > 0 %}
+<article class="{{c.collection.slug}}">
+    <header><img src="{{c.collection.img.url}}" alt="{{c.collection.title}}"></header>
+    <footer><a href="#{{c.collection.slug}}">Перейти к коллекции</a></footer>
+</article>
+{% endif %}
+{% empty %}
+{% endfor %}
+</section>
+{% for c in collections %}
+{% if c.products|length > 0 %}
+<section id="{{c.collection.slug}}" class="cards space">
+    {% for i in c.products %}
+        <a href=#! class="card">
+            <div class="header collection"
+            style="background-image:url(
+            {% if i.img %}
+                {{i.img.url}}
+            {%else%}
+                {% static 'img/default/box.png' %}
+            {%endif%})">
+                <div>
+                <h2>{{i.collection.title}}</h2>
+                <hr/>
+                <p>{{i.name}}</p>
+                <p>{{i.description}}</p>
+                </div>
+            </div>
+            <div class="main">
+                <h2>{{i.collection.title}}</h2>
+                <hr/>
+                <p>{{i.name}}</p>
+                <p>{{i.description}}</p>
+            </div>
+        </a>
+    {% empty %}
+    {% endfor %} 
+</section>
+{% endif %}
+{% empty %}
+{% endfor %}
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}
+{% endblock %}

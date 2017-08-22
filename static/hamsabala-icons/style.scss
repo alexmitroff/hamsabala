@@ -1,0 +1,84 @@
+@import "variables";
+
+@font-face {
+  font-family: 'hamsabala-icons';
+  src:  url('#{$icomoon-font-path}/hamsabala-icons.eot?s10uvy');
+  src:  url('#{$icomoon-font-path}/hamsabala-icons.eot?s10uvy#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/hamsabala-icons.ttf?s10uvy') format('truetype'),
+    url('#{$icomoon-font-path}/hamsabala-icons.woff?s10uvy') format('woff'),
+    url('#{$icomoon-font-path}/hamsabala-icons.svg?s10uvy#hamsabala-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'hamsabala-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hb-hb_animal-icon {
+  &:before {
+    content: $hb-hb_animal-icon;
+  }
+}
+.hb-aroma-icon {
+  &:before {
+    content: $hb-aroma-icon;
+  }
+}
+.hb-hb_ceremony-icon {
+  &:before {
+    content: $hb-hb_ceremony-icon;
+  }
+}
+.hb-gift-icon {
+  &:before {
+    content: $hb-gift-icon;
+  }
+}
+.hb-meditation-icon {
+  &:before {
+    content: $hb-meditation-icon;
+  }
+}
+.hb-prey-icon {
+  &:before {
+    content: $hb-prey-icon;
+  }
+}
+.hb-read-icon {
+  &:before {
+    content: $hb-read-icon;
+  }
+}
+.hb-relax-icon {
+  &:before {
+    content: $hb-relax-icon;
+  }
+}
+.hb-swan-icon {
+  &:before {
+    content: $hb-swan-icon;
+  }
+}
+.hb-talk-icon {
+  &:before {
+    content: $hb-talk-icon;
+  }
+}
+.hb-veg-icon {
+  &:before {
+    content: $hb-veg-icon;
+  }
+}
+

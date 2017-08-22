@@ -6,6 +6,8 @@ class City(models.Model):
     show = models.BooleanField("show", default = True) 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
+    slug = models.SlugField('slug', max_length=50,
+            help_text="http://hamsabala.ru/slug/slug")
     created = models.DateField(u'created',auto_now=False, 
             auto_now_add=True)
     modified = models.DateField(u'modified',auto_now=True, 
@@ -14,7 +16,7 @@ class City(models.Model):
     class Meta:
         verbose_name = "City"
         verbose_name_plural = "Cities"
-        ordering = ["name"]
+        ordering = ["pos"]
 
     def __str__(self):
         return self.name
@@ -22,6 +24,7 @@ class City(models.Model):
 class Partner(models.Model):
     pos = models.IntegerField("position",default=0)
     show = models.BooleanField("show", default = True) 
+    frontpage = models.BooleanField("frontpage", default = False, help_text="Show on front page") 
     name = models.CharField( "name", max_length = 140,
             blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE,

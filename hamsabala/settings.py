@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'products',
     'retail',
 ]
@@ -125,4 +126,11 @@ STATIC_ROOT = STAT_ROOT
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDI_DIR
+
+SERVER_EMAIL = DJ_SERVER_EMAIL
+EMAIL_HOST = DJ_SMTP
+EMAIL_HOST_USER = DJ_EMAIL_USER
+EMAIL_HOST_PASSWORD = DJ_EMAIL_PASS
+EMAIL_PORT = DJ_EMAIL_PORT
+EMAIL_USE_TLS = DJ_EMAIL_TLS
 

@@ -2,24 +2,36 @@
 {% load staticfiles %}
 {% block title %}{% endblock %}
 {% block page %}
-<section id="title" class="space">
+<section id="title" class="title-image space">
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
             <h1>hamsa bala</h1>
-            <p>Натуральная смесь трав, масел, смол, цветов и ароматных древесных опилок.</p>
-            <a href="#!" class="button" target="_blank" ><span>в магазин</span></a>
+            <p>Попробуй настоящее!</p>
     </article>
 </section>
-<section id="collections" class="space">
-    <div class="container cards">
+<section id="prods" class="space">
+    <div class="cards">
         {% for c in sections %}
-        <article class="card collection" style="background-image:url({{c.img.url}})">
-            <header><h2>{{c.title}}</h2></header>
-            <hr/>
-            <main>
-                <a href=#! >к коллекциям</a>
-            </main>
-        </article>
+        <a href="{% url 'section' c.slug %}" class="card"> 
+            <div class="header collection"
+            style="background-image:url(
+            {% if c.img %}
+                {{c.img.url}}
+            {%else%}
+                {% static 'img/default/box.png' %}
+            {%endif%})">
+                <div>
+                    <h2>{{c.title}}</h2>
+                    <hr/>
+                    <p>к коллекциям</p>
+                </div>
+            </div>
+            <div class="main">
+                <h2>{{c.title}}</h2>
+                <hr/>
+                <p>к коллекциям</p>
+            </div>
+        </a>
         {% empty %}
         {% endfor %}
     </div>  
@@ -33,8 +45,8 @@
                 </header>    
                 <p>
                 С 2009 года мы предлагаем вам уникальные высококачественные товары.</p> 
-                <p>Как мы отбираем их? Для нас важны натуральность, качество, ручной труд, этичный бизнес и&nbsp;ответственное отношение к&nbsp;окружающей среде. 
-                Знак Hamsa&nbsp;Bala не&nbsp;только гарантирует качество сырья, но&nbsp;также обеспечивает качество производственного процесса, 
+                <p>Как мы отбираем их? Для нас важны натуральность, качество, ручной труд, этичный бизнес и&nbsp;ответственное отношение к&nbsp;окружающей среде.</p>
+                <p>Знак Hamsa&nbsp;Bala не&nbsp;только гарантирует качество сырья, но&nbsp;также обеспечивает качество производственного процесса, 
                 производственную среду, использование квалифицированных работников и&nbsp;исключение детского труда. 
                 Мы выбираем только соответствующие этим критериям и&nbsp;созданные с&nbsp;любовью товары.
                 Мы начали свои поиски лучших товаров для вас с&nbsp;Индии, но&nbsp;наша цель&nbsp;&mdash; находить самое лучшее по&nbsp;всему миру.
@@ -44,35 +56,70 @@
                 </p>
             </article>
             <section class="imgs">
-                <div style="background-image:url({% static 'img/backgrounds/dust.jpg' %});"></div>
-                <div style="background-image:url({% static 'img/backgrounds/forest.jpg' %});"></div>
+                <div style="background-image:url({% static 'img/backgrounds/scent.jpg' %});"></div>
+                <div style="background-image:url({% static 'img/backgrounds/lavand.jpg' %});"></div>
             </section>
         </div>
         <div>
             <section class="imgs">
-                <div class="half" style="background-image:url({% static 'img/backgrounds/spice.jpg' %});"></div>
+                <div class="half" style="background-image:url({% static 'img/backgrounds/boy.jpg' %});"></div>
             </section>
-            <article class="panel"></article>
+            <section class="imgs">
+                <div class="half" style="background-image:url({% static 'img/backgrounds/hb_candels.jpg' %});"></div>
+            </section>
         </div>
     </div>
 </section>
 <section class="feedback">
             <h2>Обратная связь</h2>
             <hr/>
-        <form>
+        <form id="feedback">
+                <div id="fb-success" class="fb-responce">Письмо успешно отправленно!</div>
+                <div id="fb-error" class="fb-responce">Произошла ошибка. Попрбуйте позвонить по телефону: +7 911 005 56 56</div>
+                {% csrf_token %} 
                 <input type="text" name="name" id="id_name" placeholder="имя" required/>
                 <input type="email" name="email" id="id_email" placeholder="почта" required/>
-                <input type="text" name="subject" id="id_subject" placeholder="тема" required/>
                 <textarea name="text" id="id_text" required></textarea>
                 <input type="submit" value="отправить" />
         </form>
 </section>
 <section id="retail" class="space">
-</section>
-<section id="contacts">
+    <div class="retail-title"><h2>Где купить продукцию Hamsa Bala</h2></div>
+    {% for c in retail %}
+    <article class="city">
+        <header>
+        <h3>{{c.city.name}}</h3>
+        <hr/>
+        </header>
+        <main>
+        {% for i in c.shops %}
+            <section>
+                <h4>{{i.name}}</h4>
+                <div class="address">{{i.address|safe}}</div>
+            </section>    
+        {% empty %}
+            <section>
+                <p>Comming soon...</p>
+            </section>
+        {% endfor %}
+        </main>
+        <footer>
+            {% if c.more %}
+            <a class="button" href="{% url "retail" c.city.slug %}">Полный список</a>
+            {% endif %}
+        </footer>    
+    </article>        
+    {% empty %}
+    {% endfor %}
 </section>
 {% endblock %}
 {% block templates %}{% endblock %}
-{% block scripts %}{% endblock %}
+{% block scripts %}
+{% endblock %}
 {% block docready %}
+        $("#feedback").submit(function(event){
+            event.preventDefault();
+            feedback($(this));
+            return false;
+        });
 {% endblock %}
