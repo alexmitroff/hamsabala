@@ -15,8 +15,11 @@
 <section id="collections" class="space">
 {% for c in collections %}
 {% if c.products|length > 0 %}
-<article class="{{c.collection.slug}}">
-    <header><img src="{{c.collection.img.url}}" alt="{{c.collection.title}}"></header>
+<article itemscope itemtype="http://schema.org/Brand" class="{{c.collection.slug}}">
+    <header>
+        <img itemprop="logo" src="{{c.collection.img.url}}" alt="{{c.collection.title}}">
+        <meta itemprop="name" content="{{c.collection.title}}" />
+    </header>
     <footer><a href="#{{c.collection.slug}}">Перейти к коллекции</a></footer>
 </article>
 {% endif %}
@@ -25,9 +28,11 @@
 </section>
 {% for c in collections %}
 {% if c.products|length > 0 %}
-<section id="{{c.collection.slug}}" class="cards space">
+<section id="{{c.collection.slug}}" itemscope itemtype="http://schema.org/ItemList" class="cards space">
+    <meta itemprop="name" content="{{section.title}} {{c.collection.title}}" />
+    <meta itemprop="numberOfItems" content="{{c.products|length}}" />
     {% for i in c.products %}
-        <a href=#! class="card">
+        <a href=#! itemprop="itemListElement" itemscope itemtype="http://schema.org/Product" class="card">
             <div class="header collection"
             style="background-image:url(
             {% if i.img %}
@@ -36,10 +41,17 @@
                 {% static 'img/default/box.png' %}
             {%endif%})">
                 <div>
-                <h2>{{i.collection.title}}</h2>
+                    <h2 itemprop="brand" itemscope itemtype="http://schema.org/Brand"><span itemprop="name">{{i.collection.title}}</span></h2>
                 <hr/>
-                <p>{{i.name}}</p>
-                <p>{{i.description}}</p>
+                <meta itemprop="manufacturer" content="Hamsa Bala" />
+                {% if i.img %}<meta itemprop="image" content="{{i.img.url}}" />{%endif%}
+                <meta itemprop="category" content="{{section.title}}" />
+                <p itemprop="name">{{i.name}}</p>
+                <p itemprop="description">{{i.description}}</p>
+                <p itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <meta itemprop="price" content="{{i.price}}" />
+                    <meta itemprop="priceCurrency" content="RUB"/>
+                </p>
                 </div>
             </div>
             <div class="main">
