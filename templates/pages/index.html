@@ -5,14 +5,19 @@
 <section id="title" class="title-image space">
     <article class="container">
             <div class="logo">{% include "include/logo.html"  %}</div>
-            <h1>hamsa bala</h1>
+            <h1 itemprop="name">hamsa bala</h1>
+            <meta itemprop="primaryImageOfPage" content="{% static 'img/backgrounds/temple.jpg' %}"/>
             <p>Попробуй настоящее!</p>
     </article>
 </section>
 <section id="prods" class="space">
-    <div class="cards">
+
+    <div class="cards" itemscope itemtype="http://schema.org/ItemList">
+    <meta itemprop="name" content="Категории товаров" />
+    <meta itemprop="numberOfItems" content="{{sections|length}}" />
         {% for c in sections %}
-        <a href="{% url 'section' c.slug %}" class="card"> 
+        <a itemprop="itemListElement" itemscope itemtype="http://schema.org/Thing" href="{% url 'section' c.slug %}" class="card"> 
+            {% if c.img %}<meta itemprop="image" content="{{c.img.url}}" />{% endif %}
             <div class="header collection"
             style="background-image:url(
             {% if c.img %}
@@ -21,7 +26,7 @@
                 {% static 'img/default/box.png' %}
             {%endif%})">
                 <div>
-                    <h2>{{c.title}}</h2>
+                    <h2 itemprop="name">{{c.title}}</h2>
                     <hr/>
                     <p>к коллекциям</p>
                 </div>
