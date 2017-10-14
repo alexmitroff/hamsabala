@@ -2,17 +2,18 @@
 <!doctype html>
 <html lang="ru">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <title>{% block title %}{% endblock %}Hamsa Bala</title>
-        <meta name="title" content="{% block mtitle %}{% endblock %} Hamsa bala">
-        <meta name="description" content="{% block mdescrition %}{% endblock %}">
-        <meta name="keywords" content="{% block mkeywords %}{% endblock %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="title" content="{% block mtitle %}{% endblock %} Hamsa bala"/>
+        <meta name="description" content="{% block mdescrition %}{% endblock %}"/>
+        <meta name="keywords" content="{% block mkeywords %}{% endblock %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--[if lt IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
         {% if not debug %}{% include  'include/analytics.html' %}{%endif%}
-        <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}">
+        <link rel="icon" size="100x100" href="{% static 'favicon.png' %}"/>
+        <link rel="stylesheet" href="{% static 'css/hamsabala.css' %}"/>
     </head>
 
     <body itemscope itemtype="http://schema.org/WebPage">
