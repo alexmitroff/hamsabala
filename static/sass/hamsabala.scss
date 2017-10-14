@@ -3,7 +3,7 @@ $light-color:rgba(255,255,255,1);
 $light-text-back:rgba(255,255,255,.9); 
 $font-color:rgba(83,86,90,1); /* Pantone Cool Gray 11 C */
 
-$space-color:lighten(rgba(217,217,214,1), 10%); /* Pantone Cool Gray 1 C */
+$space-color:white; /* Pantone Cool Gray 1 C */
 $space-size:3vw;
 $space-half:$space-size/2;
 
@@ -103,6 +103,7 @@ body{
     }
 
     > header{
+        border-bottom:.1rem solid #eee;
     }
 
     > main{
@@ -110,16 +111,39 @@ body{
         display:flex;
         flex-direction:column;
         max-width:$max-screen;
-        margin:0 auto;
+        margin:1vw auto 0 auto;
     }
 
     > footer{
+        
+        h2, h3 {
+            color:$light-color;
+            text-align:left;
+            margin-bottom:1rem;
+        }
+
+        h3{
+            padding-top:.5rem;
+            font-size:1rem;
+        }
+
+        h2 {
+            font-size:1.2rem;
+            margin-bottom:1.2rem;
+            text-transform:uppercase;
+        }
+
+        > .container{
+            display:flex;
+            flex-direction:column;
+        }
+
         padding:2rem 1rem;
         min-height:10rem;
         background-color:black;
         a, p {
             color:$light-color;
-            text-align:center;
+            text-align:left;
         }
 
         a:hover,
@@ -136,12 +160,9 @@ body{
             }
         }
 
-        p:first-child{
-            text-transform:uppercase;
-        }
-
-        p:last-child{
-            margin:0;
+        > .copy{
+            margin-top:$space-size;
+            text-align:center;
         }
     }
 }
@@ -208,7 +229,7 @@ nav{
         
         > li{
             min-height:3rem;
-            height:$space-size;
+            height:4vw;
             display:flex;
             justify-content:center;
             align-items:center;
@@ -386,7 +407,7 @@ p{
 .title-image{
     background-image:$back-title;
     > .container{
-        min-height:50vh;
+        min-height:80vh;
     }
 }
 
@@ -451,7 +472,7 @@ p{
                 background-repeat:no-repeat;
                 background-position:center;
                 background-size:80%;
-                height:10rem;
+                height:8rem;
            }
        }
 
@@ -887,6 +908,10 @@ $retail-gap:.2rem;
         }
         >footer{
             padding:5rem 1rem;
+            > .container{
+                flex-direction:row;
+                justify-content:space-around;
+            }
         }            
     }
 
@@ -1095,13 +1120,18 @@ $retail-gap:.2rem;
             width:$max-screen;
         }
 
-        >header{
+        >header,
+        > footer{
             padding:0;
             > .container{
                 width:$max-screen;
                 margin:0 auto;
                 padding:0 $space-size;
             }
+        }
+
+        > footer{
+            padding:$space-size $space-size 1rem $space-size;
         }
     }
 

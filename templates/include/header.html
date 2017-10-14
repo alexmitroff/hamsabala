@@ -3,7 +3,7 @@
     <ul id="menu">
         <li><a href="{% url 'index' %}#about" id="m-about">О нас</a></li>
         <li><a href="{% url 'index' %}#section_layout" id="m-essense">Продукция</a></li>
-        <li><a href="{% url 'index' %}#retail" id="m-retail">Где купить</a></li>
+        <li><a href="{% url 'retail' 'spb' %}" id="m-retail">Где купить</a></li>
         <li><a href="#contacts" id="m-contacts">Контакты</a></li>
     </ul>
     <button id="mobile-menu-button" onclick="toggleMenu();"></button>

@@ -50,7 +50,7 @@
         {% endfor %}
 </section>
 
-<section id="about">
+<section id="about" class="space">
     <div class="container">
         <div>
             <article class="panel">
@@ -72,62 +72,23 @@
                 </main>
             </article>
             <section class="imgs">
-                <div style="background-image:url({% static 'img/backgrounds/scent.jpg' %});"></div>
-                <div style="background-image:url({% static 'img/backgrounds/lavand.jpg' %});"></div>
-            </section>
-        </div>
-        <div>
-            <section class="imgs">
-                <div class="half" style="background-image:url({% static 'img/backgrounds/boy.jpg' %});"></div>
-            </section>
-            <section class="imgs">
-                <div class="half" style="background-image:url({% static 'img/backgrounds/hb_candels.jpg' %});"></div>
+                <div class="half" style="background-image:url({% static 'img/backgrounds/scent.jpg' %});"></div>
             </section>
         </div>
     </div>
 </section>
-<section id="feedback-form" class="feedback">
+<section id="feedback-form" class="feedback space">
             <h2>Обратная связь</h2>
             <hr/>
         <form id="feedback">
                 <div id="fb-success" class="fb-responce">Письмо успешно отправленно!</div>
-                <div id="fb-error" class="fb-responce">Произошла ошибка. Попрбуйте позвонить по телефону: +7 911 005 56 56</div>
+                <div id="fb-error" class="fb-responce">Произошла ошибка. Попробуйте позвонить по телефону: +7 911 005 56 56</div>
                 {% csrf_token %} 
                 <input type="text" name="name" id="id_name" placeholder="имя" required/>
                 <input type="email" name="email" id="id_email" placeholder="почта" required/>
                 <textarea name="text" id="id_text" required></textarea>
                 <input type="submit" value="отправить" />
         </form>
-</section>
-<section id="retail" class="space">
-    <div class="retail-title"><h2>Где купить продукцию Hamsa Bala</h2></div>
-    {% for c in retail %}
-    <article class="city
-    city-space-{% if retail|length > 3 %}4{% else %}{{ retail|length }}{% endif %}">
-        <header>
-        <h3>{{c.city.name}}</h3>
-        <hr/>
-        </header>
-        <main>
-        {% for i in c.shops %}
-            <section>
-                <h4>{{i.name}}</h4>
-                <div class="address">{{i.address|safe}}</div>
-            </section>    
-        {% empty %}
-            <section>
-                <p>Comming soon...</p>
-            </section>
-        {% endfor %}
-        </main>
-        <footer>
-            {% if c.more %}
-            <a class="button" href="{% url "retail" c.city.slug %}">Список магазинов</a>
-            {% endif %}
-        </footer>    
-    </article>        
-    {% empty %}
-    {% endfor %}
 </section>
 {% endblock %}
 {% block templates %}{% endblock %}
