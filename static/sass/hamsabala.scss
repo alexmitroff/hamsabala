@@ -118,7 +118,7 @@ body{
         
         h2, h3 {
             color:$light-color;
-            text-align:left;
+            text-align:center;
             margin-bottom:1rem;
         }
 
@@ -136,14 +136,19 @@ body{
         > .container{
             display:flex;
             flex-direction:column;
+            align-items:center;
+            
+            > section{
+                padding-bottom:$space-size;
+            }
         }
 
-        padding:2rem 1rem;
+        padding:$space-size 1rem 0 1rem;
         min-height:10rem;
         background-color:black;
         a, p {
             color:$light-color;
-            text-align:left;
+            text-align:center;
         }
 
         a:hover,
@@ -418,13 +423,13 @@ p{
 
 #section_layout{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-template-rows:repeat(4, 1fr);
+    grid-template-columns:repeat(1, 1fr);
     grid-gap:$space-size;
     width:100%;
     > a {
         display:flex;
         flex-direction:column;
+        min-height:20*$space-size;
     }
 
     .section-title{
@@ -433,17 +438,30 @@ p{
         font-size:1.1rem;
     }
 
+
+    .section-title-mobile{
+        display:inline;
+        background-color:$light-color;
+        padding:.5rem 1rem;
+    }
+
     > a[class^="section-"]{
-        grid-row-end: span 2;
         > .section-image{
-            display:block;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-end;
+            align-items:flex-start;
             position:relative;
-            padding-top:100%;
+            height:100%;
             background-color:$light-color;
             transition:$link-transition;
         }
         > .section-title{
             padding-top:.5rem;
+        }
+
+        > .section-image + .section-title{
+            display:none;
         }
     }
     > a[class^="section-"]:hover,
@@ -454,16 +472,17 @@ p{
     }
 
     > .section-4{
-        grid-column-end:span 2;
         background-color:$light-color;
         justify-content:flex-end;
-        padding:1rem;
+        align-items:flex-start;
         > .section-title{
-            color:$light-color;
+            padding:.5rem 1rem;
+            background-color:$light-color;
         }
     }
 
     > a[class^="collection-"]{
+        display:none;
        > article{
            padding:1rem;
            > header{
@@ -907,10 +926,17 @@ $retail-gap:.2rem;
             padding-top:$space-size;
         }
         >footer{
-            padding:5rem 1rem;
+            h2, h3{
+                text-align:left;
+            }
+
             > .container{
                 flex-direction:row;
                 justify-content:space-around;
+            }
+
+            a, p {
+                text-align:left;
             }
         }            
     }
@@ -1006,6 +1032,33 @@ $retail-gap:.2rem;
     .button{
         max-width:12rem;
         margin:0 auto 1rem auto;
+    }
+
+    #section_layout{
+        grid-template-columns:repeat(3, 1fr);
+        grid-template-rows:repeat(4, 1fr);
+        grid-gap:$space-size;
+        width:100%;
+        
+        > a{
+            min-height:0;
+        }
+        
+        > a[class^="section-"]{
+            grid-row-end: span 2;
+        }
+
+        > .section-4{
+            grid-column-end:span 2;
+            > .section-title{
+                background:none;
+                color:$light-color;
+            }
+        }
+
+        > a[class^="collection-"]{
+            display:block;
+        }
     }
 }
 
@@ -1109,6 +1162,17 @@ $retail-gap:.2rem;
 
         > .city{
             @include city-height(4);
+        }
+    }
+
+    #section_layout{
+        > a[class^="section-"]{
+            .section-title-mobile{
+                display:none;
+            }
+            > .section-image + .section-title{
+                display:block;
+            }
         }
     }
     
