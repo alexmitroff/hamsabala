@@ -10,40 +10,44 @@
             <p>Попробуй настоящее!</p>
     </article>
 </section>
-<section id="prods" class="space">
-
-    <div class="cards" itemscope itemtype="http://schema.org/ItemList">
-    <meta itemprop="name" content="Категории товаров" />
-    <meta itemprop="numberOfItems" content="{{sections|length}}" />
-        {% for c in sections %}
-        <a itemprop="itemListElement" itemscope itemtype="http://schema.org/Thing" href="{% url 'section' c.slug %}" class="card"> 
-            {% if c.img %}<meta itemprop="image" content="{{c.img.url}}" />{% endif %}
-            <div class="header collection"
-            style="background-image:url(
-            {% if c.img %}
-                {{c.img.url}}
-            {%else%}
-                {% static 'img/default/box.png' %}
-            {%endif%})">
-                <div>
-                    <h2 itemprop="name">{{c.title}}</h2>
-                    <hr/>
-                    <p>к коллекциям</p>
-                </div>
-            </div>
-            <div class="main">
-                <h2>{{c.title}}</h2>
-                <hr/>
-                <p>к коллекциям</p>
-            </div>
-        </a>
-        {% empty %}
-        {% endfor %}
-    </div>  
-</section>
 
 <section id="section_layout" class="space">
-
+        {% for s in sections %}
+            {% if forloop.counter < 4 or forloop.counter > 4 %}
+            <a class="section-{{forloop.counter}}" href="{% url 'section' s.slug %}">
+                <div class="section-image"
+                     style="background-image:url(
+                     {% if s.img %}
+                        {{s.img.url}}
+                     {%else%}
+                        {% static 'img/default/box.png' %}
+                     {%endif%})">
+                </div>
+                <div class="section-title">{{s.title}}</div>
+            </a>
+            {% elif forloop.counter == 4 %}
+            <a class="section-{{forloop.counter}}" href="{% url 'section' s.slug %}"
+                     style="background-image:url(
+                     {% if s.img %}
+                        {{s.img.url}}
+                     {%else%}
+                        {% static 'img/default/box.png' %}
+                     {%endif%})">
+                <div class="section-title">{{s.title}}</div>
+            </a>
+            {% for c in collections %}
+            <a class="collection-{{forloop.counter}}" 
+               href="{% url 'section' s.slug %}#{{c.slug}}">
+                <article class="{{c.slug}}">
+                    <header style="background-image:url({{c.img.url}})">
+                    </header>
+                </article>
+            </a>
+            {% empty %}
+            {% endfor %}
+            {% endif %}
+        {% empty %}
+        {% endfor %}
 </section>
 
 <section id="about">
@@ -98,7 +102,8 @@
 <section id="retail" class="space">
     <div class="retail-title"><h2>Где купить продукцию Hamsa Bala</h2></div>
     {% for c in retail %}
-    <article class="city">
+    <article class="city
+    city-space-{% if retail|length > 3 %}4{% else %}{{ retail|length }}{% endif %}">
         <header>
         <h3>{{c.city.name}}</h3>
         <hr/>
@@ -117,7 +122,7 @@
         </main>
         <footer>
             {% if c.more %}
-            <a class="button" href="{% url "retail" c.city.slug %}">Полный список</a>
+            <a class="button" href="{% url "retail" c.city.slug %}">Список магазинов</a>
             {% endif %}
         </footer>    
     </article>        

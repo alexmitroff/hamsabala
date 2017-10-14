@@ -56,7 +56,8 @@ def str2obj():
 def index(request):
     template = 'pages/index.html'
     sections = Section.objects.filter(show=True)
-    cities = City.objects.filter(show=True)
+    collections = Collection.objects.filter(show=True)
+    cities = City.objects.filter(show=True, frontpage=True)
     retail = []
     for c in cities:
         item = {}
@@ -69,6 +70,7 @@ def index(request):
 
     var = {
             "sections":sections,
+            "collections":collections,
             "retail":retail,
             }
     return render(request, template, var)
