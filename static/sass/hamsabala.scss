@@ -453,7 +453,13 @@ p{
                 background-size:80%;
                 height:10rem;
            }
-       } 
+       }
+
+      > article.aromapure {
+        >header{
+            border-color:$light-color;
+        }
+      } 
     }
 
     > .section-4:focus,
@@ -602,6 +608,13 @@ p{
         >footer{
             border-bottom:$title-border;
             padding-bottom:1rem;
+        }
+    }
+    > article.aromapure{
+        background-color:$font-color;
+        > header,
+        >footer{
+            border-color:$light-color;
         }
     }
 
