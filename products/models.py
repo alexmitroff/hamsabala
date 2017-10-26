@@ -1,8 +1,22 @@
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
+from PIL import Image as Img
+import StringIO
 
 # Create your models here.
+def image_compress(obj, img_width):
+    img = Img.open(StringIO.StringIO(obj.img.read()))
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
+    img.thumbnail((img_width, img_width*obj.img.height/obj.img.width), Img.ANTIALIAS)
+    output = StringIO.StringIO()
+    img.save(output, format='JPEG', quality=80)
+    output.seek(0)
+    obj.img = InMemoryUploadedFile(output,'ImageField', 
+            "%s.jpg" %self.image.name.split('.')[0], 
+            'image/jpeg', output.len, None)
+    return obj
 
 def section_path(instance, filename):
 	filename = filename.replace(" ", "")
