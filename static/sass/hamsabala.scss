@@ -453,6 +453,7 @@ p{
             align-items:flex-start;
             position:relative;
             height:100%;
+            min-height:20*$space-size;
             background-color:$light-color;
             transition:$link-transition;
         }
@@ -1046,6 +1047,9 @@ $retail-gap:.2rem;
         
         > a[class^="section-"]{
             grid-row-end: span 2;
+            > .section-image{
+                min-height:0;
+            }
         }
 
         > .section-4{

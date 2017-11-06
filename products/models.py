@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
 from PIL import Image as Img
-import StringIO
+from io import StringIO
 
 # Create your models here.
 def image_compress(obj, img_width):

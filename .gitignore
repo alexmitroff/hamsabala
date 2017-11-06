@@ -8,6 +8,7 @@ __pycache__/
 public_html/
 local_settings.py
 *.db
+*.sql
 db.sqlite3
 media
 secret.py
